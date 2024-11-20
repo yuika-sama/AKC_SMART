@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng với Gộp Ô</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .gop-ngang {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .gop-doc {
+      background-color: #d3f8e2;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Bảng với Gộp Ô</h2>
+
+  <table>
+    <tr>
+      <td colspan="2" class="gop-ngang">Gộp 2 ô theo chiều ngang</td>
+      <td>Ô còn lại</td>
+    </tr>
+    <tr>
+      <td>Ô 1</td>
+      <td>Ô 2</td>
+      <td>Ô 3</td>
+    </tr>
+    <tr>
+      <td rowspan="2" class="gop-doc">Gộp 2 ô theo chiều dọc</td>
+      <td>Ô 2</td>
+    </tr>
+    <tr>
+      <td>Ô 3</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+@font-face {
+  font-family: Poppins-Black;
+  src: url(../public/font/Poppins/Poppins-Black.ttf);
+}
+
+@font-face {
+  font-family: Poppins-BlackItalic;
+  src: url(../public/font/Poppins/Poppins-BlackItalic.ttf);
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(../public/font/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(../public/font/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Nunito-Regular;
+  src: url(../public/font/Nunito/static/Nunito-Regular.ttf);
+}
+
+@font-face {
+  font-family: Nunito-ExtraLight;
+  src: url(../public/font/Nunito/static/Nunito-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: OpenSans_SemiCondensed-Bold;
+  src: url(../public/font/Opensans/OpenSans_SemiCondensed-Bold.ttf);
+}
