@@ -1,0 +1,51 @@
+#menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    width: 85vw;
+    /*  Loại bỏ flex-wrap: wrap; */ 
+  }
+  
+  .menu-container1{
+    margin-left:10px;
+  }
+
+  .greeting-message {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap; /* Ngăn lời chào xuống dòng */
+  }
+  
+  .menu-container2 {
+    font-size: 1em;
+    margin-top: 7px;
+    color: #666;
+    flex-shrink: 1;
+  }
+  
+  .right-items {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; 
+    margin-right: 20px;
+  }
+  
+  .right-items > div {
+    margin-left: 20px; 
+  }
+  
+  .notification-icon i {
+    cursor: pointer;
+  }
+  
+  .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }

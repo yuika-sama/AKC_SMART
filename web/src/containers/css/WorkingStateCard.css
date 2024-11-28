@@ -1,0 +1,89 @@
+.container {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 324px;
+  height: 300px;
+  text-align: center;
+}
+
+.title {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+  
+}
+
+.time-clock {
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.time-date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.info-container {
+  background-color: #F8F9FA;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.info-container > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.info-container > div:last-child {
+  margin-bottom: 0;
+}
+
+.time-state,
+.aim-title {
+  color: #666;
+  font-size: 14px;
+}
+
+.time-range,
+.time-amount {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Font family cho toàn bộ container */
+.container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .time-clock {
+    font-size: 28px;
+  }
+
+  .info-container {
+    padding: 12px;
+  }
+}
+
+/* Optional hover effects */
+.info-container > div:hover {
+  background-color: #f0f2f5;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
