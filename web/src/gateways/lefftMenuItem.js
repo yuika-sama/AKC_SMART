@@ -8,54 +8,54 @@ const LeftMenuItems = [
     label: 'Dashboard',
     link: '/dashboard',
     subItems: [
-      { key: 'overview', label: 'Overview', link: '/dashboard/overview' },
-      { key: 'stats', label: 'Statistics', link: '/dashboard/stats' },
+      { key: 'overview', label: 'Tổng quan', link: '/dashboard/overview' },
+      { key: 'statics', label: 'Bố của tổng quan', link: '/dashboard/statics' },
     ],
   },
   {
     key: 'Staff',
     icon: <FaUser />,
-    label: 'Staff',
+    label: 'Nhân viên',
     link: '/staff',
     subItems: [
-      { key: 'timesheet', label: 'Timesheet', link: '/staff/timesheet' },
-      { key: 'leaveRequest', label: 'Leave Request', link: '/staff/leaveRequest' },
-      { key: 'advancePaymentRequest', label: 'Advance Payment Request', link: '/staff/advancePaymentRequest' },
-      { key: 'refundPaymentRequest', label: 'Refund Payment Request', link: '/staff/refundPaymentRequest' },
-      { key: 'timesheetConfirmed', label: 'Timesheet confirmed', link: '/staff/timeSheetConfirmed' },
+      { key: 'timeSheet', label: 'Bảng chấm công', link: '/staff/timeSheet' },
+      { key: 'personalKpi', label: 'Kpi cá nhân', link: '/staff/personalKpi' },
+      { key: 'leaveRequest', label: 'Đơn xin nghỉ phép', link: '/staff/leaveRequest' },
+      { key: 'advancePaymentRequest', label: 'Tạm ứng', link: '/staff/advancePaymentRequest' },
+      { key: 'refundPaymentRequest', label: 'Hoàn ứng', link: '/staff/refundPaymentRequest' },
+      { key: 'timesheetConfirmed', label: 'Xác nhận chấm công', link: '/staff/timeSheetConfirmed' },
 
     ],
   },
   {
     key: 'warehouse',
     icon: <FaFileInvoice />,
-    label: 'Warehouse',
+    label: 'Kho hàng',
     link: '/warehouse',
     subItems: [
-      { key: 'warehouseDashboard', label: 'Dashboard ', link: '/warehouse/warehouseDashboard' },
-      { key: 'warehouseInventoryManagement', label: 'Inventory Management ', link: '/warehouse/warehouseInventoryManagement' },
-      { key: 'stockReceiving', label: 'Stock Receiving', link: '/warehouse/stockReceiving' },
+      { key: 'warehouseDashboard', label: 'Tổng quan ', link: '/warehouse/warehouseDashboard' },
+      { key: 'warehouseInventoryManagement', label: 'Yêu cầu nhập kho ', link: '/warehouse/warehouseInventoryManagement' },
+      { key: 'stockReceiving', label: 'Xuất Kho', link: '/warehouse/stockReceiving' },
     ],
   },
   {
     key: 'humanResourceManagement',
     icon: <FaFileAlt />,
-    label: 'HR Management',
+    label: 'Nhân sự HR',
     link: '/humanResourceManagement',
     subItems: [
-      { key: 'viewAllStaff', label: 'View All Staff', link: '/quote/viewAllStaff' },
+      { key: 'viewAllStaff', label: 'Nhân viên công ty', link: '/quote/viewAllStaff' },
     ],
   },
   {
     key: 'accountant',
     icon: <FaWallet />,
-    label: 'Accountant',
+    label: 'Kế toán',
     link: '/accountant',
     subItems: [
-      { key: 'cashFlowManagement', label: 'Cash Flow Management', link: '/accountant/cashFlowManagement' },
-      { key: 'accountsPayable', label: 'Accounts Payable', link: '/accountant/accountsPayable' },
-      { key: 'paymentDocuments', label: 'Payment Documents', link: '/accountant/paymentDocuments' },
-
+      { key: 'cashFlowManagement', label: 'Quản Lý Dòng Tiền', link: '/accountant/cashFlowManagement' },
+      { key: 'accountsPayable', label: 'Các Khoản Phải Trả', link: '/accountant/accountsPayable' },
+      { key: 'paymentDocuments', label: 'Tài Liệu Thanh Toán', link: '/accountant/paymentDocuments' },
     ],
   }
 ];

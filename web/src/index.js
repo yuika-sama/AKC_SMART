@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';  // Import Provider
 import { leftMenustore } from './store/leftMenuStore.js';
 import CreatePersonalKPIPage from './pages/CreatePersonalKPIPage.jsx';
 import TimeSheetPage from './pages/TimeSheetPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
 
 
         </Routes>
