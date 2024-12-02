@@ -10,7 +10,7 @@ import { CreateOrderButton, FileUploadButton } from "../core/compoinents/assets/
 import { Placeholder } from "semantic-ui-react";
 
 
-const CreateTimeSheetPage = () => {
+const CreatePersonalKPIPage = () => {
   const [upLoadData, setUpLoadData] = useState([]); // State to hold the parsed data from the file
 
   const handleFileChange = (data) => {
@@ -71,4 +71,4 @@ const CreateTimeSheetPage = () => {
   );
 };
 
-export default CreateTimeSheetPage;
+export default CreatePersonalKPIPage;

@@ -59,9 +59,11 @@ const RenderfieldComponent = ({ title, data }) => {
 
   return (
     <div className='render-field-component'>
-      <div className='render-field-component-header'>
-        <div className='render-field-title'>{title}</div>
-      </div>
+      {title && (
+        <div className='render-field-component-header'>
+          <div className='render-field-title'>{title}</div>
+        </div>
+      )}
       <div className='render-field-component-content'>
         <div className='render-field-render-content-title'>
           <table>
