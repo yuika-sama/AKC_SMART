@@ -1,6 +1,6 @@
 .kpi-header {
   font-family: 'Nunito-Regular';
-  position: absolute;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-auto-rows: 65px;
@@ -29,8 +29,9 @@
   gap: 50px;
 }
 
-.step-circle-draf {
-  font-family: 'Nunito-Regular';
+.step-circle-draf,
+.step-circle-waiting,
+.step-circle-completed {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -40,35 +41,31 @@
   font-size: 20px;
   font-weight: bold;
   color: #e3edff;
+}
+
+.step-circle-draf.active {
   background-color: #226cff;
+}
+
+.step-circle-waiting.active {
+  background-color: #226cff;
+}
+
+.step-circle-completed.active {
+  background-color: #226cff;
+}
+
+/* Default circle colors */
+.step-circle-draf {
+  background-color: #e3edff;
 }
 
 .step-circle-waiting {
-  font-family: 'Nunito-Regular';
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e3edff;
-  background-color: #226cff;
+  background-color: #cecece;
 }
 
-.step-circle-compeleted {
-  font-family: 'Nunito-Regular';
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e3edff;
-  background-color: #226cff;
+.step-circle-completed {
+  background-color: #cecece;
 }
 
 .step-line {
@@ -77,7 +74,11 @@
   border-radius: 5px;
 }
 
-
+/* Default line colors */
 .step-line.incomplete {
-  background-color: #5a85cf;
+  background-color: #cecece;
+}
+
+.step-line.completed {
+  background-color: #226cff;
 }

@@ -50,11 +50,11 @@ const CreateTimeSheetPage = () => {
           </FormField> */}
         </TableContainerHeaderButton>
 
-
         <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
           <FormField style={{ gridColumn: "span 8", gridRow: "span 1" }}>
-            <KpiPerStaffStatusComponent />
+            <KpiPerStaffStatusComponent currentStep={1} />
           </FormField>
+
 
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
             <InputfieldComponent title="Người Tạo:" />
