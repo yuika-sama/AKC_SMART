@@ -1,0 +1,44 @@
+.ui.button {
+  border-radius: 10px;
+  margin: 10%;
+  width: 20%;
+  min-width: 100px;
+  height: auto;
+  font-family: 'Nutrition', sans-serif;
+  font-size: 16px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #406ab9;
+  border: solid #274170;
+  color: #c1d2f0;
+  border: none;
+  cursor: pointer;
+}
+
+.ui.button:hover {
+  background-color: #426bb1;
+  color: white;
+}
+
+.clock-out-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #4267B2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clock-out-button:hover {
+  background-color: #385499;
+}

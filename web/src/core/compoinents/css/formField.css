@@ -1,20 +1,4 @@
-#content-container {
-  position: fixed;
-  top: 16vh;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 60px;
-  gap: 20px;
-  border: 1px solid #000000;
-  padding: 1vh;
-  width: 82.5%;
-  height: 83vh;
-  margin-left: 35vh;
-  overflow-y: auto;
-}
-
 .grid-item {
-  border: 1px dashed #1e3868;
   text-align: center;
   display: flex;
   align-items: center;

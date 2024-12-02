@@ -1,49 +1,52 @@
-.work-time-container {
-  width: 322px;
-  height: 150px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#dashboard-container {
+  position: fixed;
+  top: 11vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 100px;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 1vh;
+  width: 81.4%;
+  height: 88%;
+  border-radius: 10px;
+  margin-left: 18%;
+  overflow-y: auto;
 }
 
-.work-time-header {
+#table-container-content {
+  position: absolute;
+  top: 11%;
+  left: 1%;
+  right: 1%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 75px;
+  background-color: #ffffff;
+  gap: 2%;
+  padding: 2vh;
+  height: 90%;
+  overflow-y: auto;
+}
+
+#table-container-header-button {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 75px;
+  margin: 1%;
+  gap: 2%;
+  height: 9%;
+  border-bottom: 2px solid #F4F4F4;
+}
+
+#table-container-header-button-break {
+  position: relative;
+  text-align: center;
   display: flex;
   align-items: center;
-  gap: 16px;
-}
-
-.time-circle {
-  width: 64px;
-  height: 64px;
-  background-color: #D1D5DB;
-  border-radius: 50%;
-}
-
-.time-info {
-  flex: 1;
-}
-
-.time-value {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
-}
-
-.time-label {
-  font-size: 16px;
-  color: #4B5563;
-  margin: 4px 0 0 0;
-}
-
-.divider {
-  margin: 16px 0;
-  border-top: 1px solid #E5E7EB;
-}
-
-.remaining-time {
-  font-size: 16px;
-  color: #1F2937;
-  margin: 0;
+  justify-content: center;
 }

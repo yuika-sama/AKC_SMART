@@ -3,21 +3,45 @@ import HeaderMenu from "../core/compoinents/assets/HeaderMenu";
 import LeftMenu from "../core/compoinents/assets/LeftMenu";
 import FormField from "../core/compoinents/assets/FormField.jsx";
 import Layout from "../core/compoinents/assets/Layout";
-import { DashboardContainer } from "../containers/DashboardContainer.jsx";
+import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
+import KpiPerStaffStatusComponent from "../core/compoinents/assets/KpiPerStaffStatusComponent.jsx";
+import { InputfieldComponent, SearchFieldComponent, SelectFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
+import { CreateOrderButton } from "../core/compoinents/assets/Button.jsx";
 
-const ExamplePage = () => {
+const DashboardPage = () => {
   return (
     <Layout>
       <HeaderMenu />
       <LeftMenu />
       <DashboardContainer>
-        <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>Ô 1</FormField>
-        <FormField style={{ gridColumn: 'span 1', gridRow: 'span 2' }}>Ô 2</FormField>
-        <FormField style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>Ô 3</FormField>
-        <FormField style={{ gridColumn: 'span 1', gridRow: 'span 1' }}>Ô 4</FormField>
+
+        <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
+          <CreateOrderButton title="Tạo Đơn" link="/create-order" />
+          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
+          <FormField style={{ gridColumn: 'span 2 ', gridRow: 'span 1' }}>
+            <SearchFieldComponent />
+          </FormField>
+        </TableContainerHeaderButton>
+
+
+        <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
+          <FormField style={{ gridColumn: "span 8", gridRow: "span 1" }}>
+            <KpiPerStaffStatusComponent />
+          </FormField>
+
+          <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
+            <InputfieldComponent title="Người Tạo:" />
+          </FormField>
+          <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
+            <InputfieldComponent title="Số Điện Thoại:" />
+          </FormField>
+          <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
+            <SelectFieldComponent title="Giới tính" />
+          </FormField>
+        </TableContainerContent>
       </DashboardContainer>
-    </Layout>
+    </Layout >
   );
 };
 
-export default ExamplePage;
+export default DashboardPage;

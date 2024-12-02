@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';  // Import Provider
 import { leftMenustore } from './store/leftMenuStore.js';
 import DashboardPage from './pages/DashboardPage.jsx';
-import NewDashboardPage from './pages/NewDashboardPage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +13,7 @@ root.render(
     <Provider store={leftMenustore}>
 
       <Router>
-        <NewDashboardPage/>
+        <DashboardPage />
       </Router>
 
 

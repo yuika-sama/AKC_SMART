@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveItem } from "../../../slice/leftMenuSlice.js";
-import "../css/leftMenu.css";
+import "../css/headerMenu.css";
 
 const HeaderMenu = ({ section }) => {
   const [language, setLanguage] = useState("vi");

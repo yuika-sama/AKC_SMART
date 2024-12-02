@@ -5,7 +5,7 @@ import { toggleSubMenu } from "../../../slice/leftMenuSlice";
 import "semantic-ui-css/semantic.min.css";
 import { Grid, Menu } from "semantic-ui-react";
 import LeftMenuItems from "../../../gateways/lefftMenuItem";
-import "../css/headerMenu.css";
+import "../css/leftMenu.css";
 
 const LeftMenu = () => {
   const navigate = useNavigate();

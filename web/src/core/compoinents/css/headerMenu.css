@@ -3,11 +3,10 @@
     top: 0.5vh;
     display: flex;
     flex-direction: row;
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    background-color: #e6f4ff;
     padding: 1vh;
     width: 82.5%;
-    height: 15%;
+    height: 10%;
     margin-left: 35vh;
 }
 
@@ -24,7 +23,7 @@
     padding-top: 1vh;
     padding-left: 10px;
     font-family: 'OpenSans_SemiCondensed-Bold';
-    font-size: 30px;
+    font-size: 40px;
     color: #0f1b33;
 }
 
