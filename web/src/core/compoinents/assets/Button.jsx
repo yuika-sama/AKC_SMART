@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
+import * as XLSX from 'xlsx';
 import '../css/button.css'
 
 
@@ -25,7 +26,8 @@ const CreateOrderButton = ({ title, link, style }) => {
   );
 };
 
-const FileUploadButton = ({ title }) => {
+
+const FileUploadButton = ({ title, onFileChange }) => {
   const [fileName, setFileName] = useState('None');
 
   const handleFileChange = (e) => {
@@ -33,6 +35,18 @@ const FileUploadButton = ({ title }) => {
     if (file) {
       setFileName(file.name);
       console.log('Selected file:', file);
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const binaryString = event.target.result;
+        const workbook = XLSX.read(binaryString, { type: 'binary' });
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const data = XLSX.utils.sheet_to_json(sheet);
+
+        onFileChange(data);
+      };
+      reader.readAsBinaryString(file);
     }
   };
 
@@ -40,7 +54,8 @@ const FileUploadButton = ({ title }) => {
     <div className='file-upload-button'>
       <div style={{ fontFamily: 'Nunito-Regular', fontSize: '20px', color: '#132549' }}>{title}</div>
       <div>{fileName}</div>
-      <Button style={{ backgroundColor: '#89AAEB', position: 'relative', left: '20%' }}
+      <Button
+        style={{ backgroundColor: '#89AAEB', position: 'relative', left: '20%' }}
         icon="upload"
         onClick={() => document.querySelector('#file-input').click()}
       />
@@ -54,6 +69,9 @@ const FileUploadButton = ({ title }) => {
     </div>
   );
 };
+
+export default FileUploadButton;
+
 
 
 

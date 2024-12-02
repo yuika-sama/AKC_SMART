@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderMenu from "../core/compoinents/assets/HeaderMenu.jsx";
 import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
 import FormField from "../core/compoinents/assets/FormField.jsx";
@@ -9,35 +9,19 @@ import { InputfieldComponent, RenderfieldComponent, SearchFieldComponent, Select
 import { CreateOrderButton, FileUploadButton } from "../core/compoinents/assets/Button.jsx";
 import { Placeholder } from "semantic-ui-react";
 
-const data = [
-  { column1: 'Row 1 - Col 1', column2: 'Row 1 - Col 2', column3: 'Row 1 - Col 3', column4: 'Row 1 - Col 4' },
-  { column1: 'Row 2 - Col 1', column2: 'Row 2 - Col 2', column3: 'Row 2 - Col 3', column4: 'Row 2 - Col 4' },
-  { column1: 'Row 3 - Col 1', column2: 'Row 3 - Col 2', column3: 'Row 3 - Col 3', column4: 'Row 3 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-  { column1: 'Row 4 - Col 1', column2: 'Row 4 - Col 2', column3: 'Row 4 - Col 3', column4: 'Row 4 - Col 4' },
-
-];
 
 const CreateTimeSheetPage = () => {
+  const [upLoadData, setUpLoadData] = useState([]); // State to hold the parsed data from the file
+
+  const handleFileChange = (data) => {
+    setUpLoadData(data); // Set the parsed data in state
+  };
   return (
     <Layout>
+
       <HeaderMenu />
       <LeftMenu />
+
       <DashboardContainer>
 
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
@@ -66,7 +50,7 @@ const CreateTimeSheetPage = () => {
             <SelectFieldComponent title="Giới tính" options={[{ label: 'Nam', value: 'male' }, { label: 'Nữ', value: 'female' },]} />
           </FormField>
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 3' }}>
-            <FileUploadButton title="Tải file tại đây" />
+            <FileUploadButton title="Tải file tại đây" onFileChange={handleFileChange} />
           </FormField>
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
             <InputfieldComponent title="Mã nhân viên:" />
@@ -78,8 +62,8 @@ const CreateTimeSheetPage = () => {
             <InputfieldComponent title="Chức vụ:" />
           </FormField>
 
-          <FormField style={{ gridColumn: 'span 8', gridRow: 'span 8' }}>
-            <RenderfieldComponent title="Danh Sách Bảng" data={data} />
+          <FormField style={{ gridColumn: upLoadData.length ? 'span 8' : 'span 0', gridRow: upLoadData.length ? 'span 8' : 'span 0' }}>
+            <RenderfieldComponent title="Danh Sách Bảng" data={upLoadData} />
           </FormField>
         </TableContainerContent>
       </DashboardContainer>
