@@ -19,8 +19,8 @@
 }
 
 .ui.button:hover {
-  background-color: #426bb1;
-  color: white;
+  background-color: #395e9c;
+  color: rgb(255, 255, 255);
 }
 
 .clock-out-button {
@@ -41,4 +41,15 @@
 
 .clock-out-button:hover {
   background-color: #385499;
+}
+
+
+.file-upload-button {
+  width: 80%;
+  border: 1.5px dashed #c9c9c9;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex, ;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Input } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import '../css/button.css'
 
@@ -12,11 +12,11 @@ const ClockOutButton = ({ onClick }) => {
   );
 };
 
-const CreateOrderButton = ({ title, link }) => {
+const CreateOrderButton = ({ title, link, style }) => {
   const navigate = useNavigate();
 
   return (
-    <Button
+    <Button style={style}
       onClick={() => navigate(link || '/default-route')}
       className="ui button"
     >
@@ -25,4 +25,36 @@ const CreateOrderButton = ({ title, link }) => {
   );
 };
 
-export { CreateOrderButton, ClockOutButton };
+const FileUploadButton = ({ title }) => {
+  const [fileName, setFileName] = useState('None');
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFileName(file.name);
+      console.log('Selected file:', file);
+    }
+  };
+
+  return (
+    <div className='file-upload-button'>
+      <div style={{ fontFamily: 'Nunito-Regular', fontSize: '20px', color: '#132549' }}>{title}</div>
+      <div>{fileName}</div>
+      <Button style={{ backgroundColor: '#89AAEB', position: 'relative', left: '20%' }}
+        icon="upload"
+        onClick={() => document.querySelector('#file-input').click()}
+      />
+      <Input
+        id="file-input"
+        type="file"
+        style={{ display: 'none' }}
+        accept=".xlsx,.xls"
+        onChange={handleFileChange}
+      />
+    </div>
+  );
+};
+
+
+
+export { CreateOrderButton, ClockOutButton, FileUploadButton };
