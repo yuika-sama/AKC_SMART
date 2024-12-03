@@ -1,0 +1,17 @@
+.task-list-container {
+    background-color: #ffffff;
+    width: 80%; 
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 280px;
+    margin-top: 80px; /* Adjusted margin-top to make space for the header */
+  }
+  
+  .table-header { /* Styles for the header container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; 
+  }

@@ -1,59 +1,46 @@
-.time-card {
-    background-color: #f0f8ff; /* Màu nền nhạt */
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 200px; /* Đặt chiều rộng cố định */
-    text-align: center;
-  }
-  
-  .time-card .circle {
-    width: 48px; /* Kích thước hình tròn */
-    height: 48px;
-    border-radius: 50%;
-    background-color: #e6f7ff; /* Màu nền của hình tròn */
-    margin-bottom: 12px; /* Khoảng cách dưới */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .time-card .circle img {
-    width: 32px; /* Icon hoặc hình ảnh trong hình tròn */
-    height: 32px;
-  }
-  
-  .time-card h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 8px 0;
-    color: #1e293b; /* Màu chữ */
-  }
-  
-  .time-card p {
-    font-size: 14px;
-    color: #64748b; /* Màu chữ phụ */
-    margin: 4px 0;
-  }
-  
-  .time-card .divider {
-    width: 100%;
-    height: 1px;
-    background-color: #e5e7eb; /* Màu đường kẻ ngang */
-    margin: 12px 0;
-  }
-  
-  .time-card a {
-    font-size: 14px;
-    color: #3b82f6; /* Màu liên kết */
-    text-decoration: none;
-  }
-  
-  .time-card a:hover {
-    text-decoration: underline;
-  }
-  
+.work-time-container {
+  background-color: #fff; /* Màu nền trắng */
+  border-radius: 10px; /* Bo góc */
+  padding: 20px; /* Khoảng cách bên trong */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+  width: 300px; /* Điều chỉnh chiều rộng theo nhu cầu */
+}
+
+.work-time-header {
+  display: flex; /* Sử dụng flexbox để căn chỉnh */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.time-circle {
+  width: 50px; /* Kích thước hình tròn */
+  height: 50px;
+  border-radius: 50%; /* Hình tròn */
+  background-color: #e0f2f7; /* Màu nền xanh nhạt */
+  margin-right: 15px; /* Khoảng cách với phần chữ */
+}
+
+.time-info {
+  /* Không cần thêm style, đã có trong component */
+}
+
+.time-value {
+  font-size: 24px; /* Kích thước chữ lớn */
+  font-weight: bold; /* In đậm */
+  margin-bottom: 5px; /* Khoảng cách với dòng chữ nhỏ */
+}
+
+.time-label {
+  font-size: 14px; /* Kích thước chữ nhỏ */
+  color: #757575; /* Màu xám */
+}
+
+.divider {
+  height: 1px; /* Chiều cao đường divider */
+  background-color: #e0e0e0; /* Màu xám nhạt */
+  margin: 20px 0; /* Khoảng cách trên dưới */
+}
+
+.remaining-time {
+  font-size: 16px; /* Kích thước chữ */
+  color: #2196f3; /* Màu xanh dương */
+}

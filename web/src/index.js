@@ -8,6 +8,7 @@ import { leftMenustore } from './store/leftMenuStore.js';
 import CreatePersonalKPIPage from './pages/CreatePersonalKPIPage.jsx';
 import TimeSheetDashBoardPage from './pages/TimeSheetDashBoardPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import Overview from "./pages/Overview.jsx"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,8 @@ root.render(
     <Provider store={leftMenustore}>
       <Router>
         <Routes>
-
+          <Route path = "dashboard/overview" element = {<Overview/>}/>
+          {/* <Route path = "dashboard/statics" element = {<Overview/>}/> */}
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />
