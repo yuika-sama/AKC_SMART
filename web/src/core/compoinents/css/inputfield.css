@@ -78,12 +78,12 @@
 }
 
 .render-field-component {
+  border: 0.5px solid #0b5da0;
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: #eeeeee;
-  border: 1px solid #aaaaaa;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -106,18 +106,18 @@
 }
 
 .render-field-component-content {
-  background-color: rgb(240, 240, 240);
-  border: 0.5px solid #dbdbdb;
+  background-color: #ffffff;
   border-radius: 10px;
-  top: 6%;
-  width: 95.5%;
-  height: 95%;
+  width: 98%;
+  height: 100%;
   text-align: left;
   margin: 1%;
   overflow: auto;
 }
 
 .render-field-render-content-title {
+  border-radius: 20px;
+  background-color: #c9c9c9;
   font-family: 'Nunito-Regular';
   position: sticky;
   top: 0%;
@@ -131,26 +131,68 @@
 .render-field-render-content-content {
   font-family: 'Nunito-Regular';
   position: relative;
-  width: 100%;
-  height: 100%;
   border-radius: 10px;
-  padding: 10px;
   overflow-y: auto;
 }
 
 table {
-  width: 102%;
+  width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+
 }
 
 th {
-
-  background-color: #cecece;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-size: 20px;
 }
 
 th,
 td {
   padding: 8px 12px;
   text-align: left;
-  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.render-field-render-content-body {
+  background-color: #ffffff;
+  font-family: 'Nunito-Regular';
+  opacity: 86%;
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  top: 1%;
+  width: 100%;
+  height: 89%;
+  text-align: left;
+  padding-right: 10px;
+  overflow-y: auto;
+}
+
+
+.render-field-render-content-footer {
+  border-top: 1px solid #e6e6e6;
+  font-family: 'Nunito-Regular';
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  top: 1.5%;
+  left: 1%;
+  width: 98%;
+  height: 8%;
+  text-align: right;
+}
+
+.ui.loader::before {
+  border-top-color: rgb(255, 255, 255) !important;
+  width: 50px;
+  height: 50px;
+}
+
+.ui.loader::after {
+  border-top-color: #0b1629 !important;
+  width: 50px;
+  height: 50px;
 }
