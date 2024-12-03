@@ -9,6 +9,7 @@ import CreatePersonalKPIPage from './pages/CreatePersonalKPIPage.jsx';
 import TimeSheetDashBoardPage from './pages/TimeSheetDashBoardPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import Overview from "./pages/Overview.jsx"
+import TaskList from './pages/TaskList.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,7 @@ root.render(
       <Router>
         <Routes>
           <Route path = "dashboard/overview" element = {<Overview/>}/>
-          {/* <Route path = "dashboard/statics" element = {<Overview/>}/> */}
+          {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />

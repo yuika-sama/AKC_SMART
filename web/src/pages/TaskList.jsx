@@ -15,6 +15,25 @@ const TaskList = () => {
     { "Tên công việc": 'Tên công việc 1', "Thời gian": '5 ngày', "Tiến độ": '50%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
     { "Tên công việc": 'Tên công việc 2', "Thời gian": '1 tuần', "Tiến độ": '75%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
     { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
+    { "Tên công việc": 'Tên công việc 3', "Thời gian": '2 ngày', "Tiến độ": '10%', "Mô tả": 'Mô tả', "Ghi chú": 'Ghi chú' },
   ];
 
   return (
@@ -37,7 +56,7 @@ const TaskList = () => {
               <FormField
                 style={{
                   gridColumn: "span 8",
-                  gridRow:"span 7",
+                  gridRow:"span 6",
                   gridTemplateColumns: "repeat(8, 1fr)",
                 }}
               >
