@@ -4,16 +4,16 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   width: 324px;
-  height: 300px;
+  height: 310px;
   text-align: center;
+  border: 2px solid #648BED;
 }
 
 .title {
   font-size: 16px;
   color: #333;
   margin: 0 0 16px 0;
-  font-weight: 500;
-  
+  font-weight: bold;
 }
 
 .time-clock {

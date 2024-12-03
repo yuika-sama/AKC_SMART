@@ -4,6 +4,7 @@
   padding: 20px; /* Khoảng cách bên trong */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
   width: 300px; /* Điều chỉnh chiều rộng theo nhu cầu */
+  border: 2px solid #648BED;
 }
 
 .work-time-header {
