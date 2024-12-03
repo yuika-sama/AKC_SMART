@@ -1,52 +1,57 @@
 .main-layout {
   padding: 20px;
-  margin-left: 230px;
-  margin-top: 50px;
+  margin-left: 250px;
+  margin-top: 60px;
 }
 
 .table-layout {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 30px 20px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Khoảng cách giữa các hàng */
 }
 
-.first-row th {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  display: inline-block;
-  margin-right: 50px;
-  justify-content: center; 
-  align-items: center; 
+.first-row,
+.second-row {
+  display: flex;
+  justify-content: space-between; /* Dàn đều các phần tử trên cùng một hàng */
+  gap: 30px; /* Khoảng cách giữa các cột */
 }
 
-.first-row th:nth-child(1) {
-  width: auto;
-}
-
-.first-row th:nth-child(2) {
-  width: auto;
-}
-
-.first-row th:nth-child(3) {
-  width: auto;
-}
-
+.first-row th,
 .second-row th {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: left;
+  flex: 1; /* Các phần tử chiếm đều không gian hàng */
 }
 
-.second-row th:nth-child(1) {
-  width: 70%;
+.first-row th,
+.second-row th {
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung bên trong thẻ */
+  align-items: center;
 }
 
+.first-row th:nth-child(1),
+.first-row th:nth-child(2),
+.first-row th:nth-child(3),
+.second-row th:nth-child(1),
 .second-row th:nth-child(2) {
-  width: 30%;
+  width: auto; /* Tự động căn chỉnh kích thước */
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .table-layout {
+    gap: 10px;
+  }
+
+  .first-row,
+  .second-row {
+    flex-direction: column; /* Các phần tử xếp chồng nhau trên màn hình nhỏ */
+    gap: 15px;
+  }
 }
