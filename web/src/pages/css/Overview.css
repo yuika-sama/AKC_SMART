@@ -7,14 +7,14 @@
 .table-layout {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Khoảng cách giữa các hàng */
+  gap: 20px;
 }
 
 .first-row,
 .second-row {
   display: flex;
-  justify-content: space-between; /* Dàn đều các phần tử trên cùng một hàng */
-  gap: 30px; /* Khoảng cách giữa các cột */
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .first-row th,
@@ -24,13 +24,13 @@
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: left;
-  flex: 1; /* Các phần tử chiếm đều không gian hàng */
+  flex: 1;
 }
 
 .first-row th,
 .second-row th {
   display: flex;
-  justify-content: center; /* Căn giữa nội dung bên trong thẻ */
+  justify-content: center;
   align-items: center;
 }
 
@@ -39,11 +39,9 @@
 .first-row th:nth-child(3),
 .second-row th:nth-child(1),
 .second-row th:nth-child(2) {
-  width: auto; /* Tự động căn chỉnh kích thước */
+  width: auto;
 }
 
-
-/* Responsive Design */
 @media screen and (max-width: 768px) {
   .table-layout {
     gap: 10px;
@@ -51,7 +49,7 @@
 
   .first-row,
   .second-row {
-    flex-direction: column; /* Các phần tử xếp chồng nhau trên màn hình nhỏ */
+    flex-direction: column;
     gap: 15px;
   }
 }
