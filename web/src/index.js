@@ -8,6 +8,10 @@ import { leftMenustore } from './store/leftMenuStore.js';
 import CreatePersonalKPIPage from './pages/CreatePersonalKPIPage.jsx';
 import TimeSheetDashBoardPage from './pages/TimeSheetDashBoardPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import PersonalKPIPage from './pages/PersonalKPIPage.jsx';
+import LeaveRequestPage from './pages/LeaveRequestPage.jsx';
+import AdvancePaymentRequestPage from './pages/AdvancePaymentRequestPage.jsx';
+import RefundPaymentRequestPage from './pages/RefundPaymentRequestPage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +23,11 @@ root.render(
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />
+          <Route path="staff/personalKpi" element={<PersonalKPIPage />} />
+          <Route path="staff/leaveRequest" element={<LeaveRequestPage />} />
+          <Route path="staff/advancePaymentRequest" element={<AdvancePaymentRequestPage />} />
+          <Route path="staff/RefundPaymentRequest" element={<RefundPaymentRequestPage />} />
+
           <Route path="/*" element={<NotFoundPage />} />
 
 
