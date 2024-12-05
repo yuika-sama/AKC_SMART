@@ -56,18 +56,24 @@ const LeftMenu = () => {
                 color: '#152648',
                 transition: 'background-color 0.4s ease, color 0.4s ease',
               }}
-              onClick={() => dispatch(toggleSubMenu(item.key))}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = '#90bcf6')} // Chuyển màu khi hover
-              onMouseLeave={(e) => (e.target.style.backgroundColor = activeItems.includes(item.key) ? '#90bcf6' : '#ffffff')} // Quay lại màu ban đầu khi rời chuột
+              onClick={() => {
+                if (item.subItems.length > 0) {
+                  dispatch(toggleSubMenu(item.key));
+                } else {
+                  navigate(item.link);
+                }
+              }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = '#90bcf6')}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = activeItems.includes(item.key) ? '#90bcf6' : '#ffffff')}
             >
               {item.icon} {item.label}
             </Menu.Item>
-            {openMenu[item.key] && (
+            {openMenu[item.key] && item.subItems.length > 0 && (
               <Menu.Menu
                 style={{
                   maxHeight: openMenu[item.key] ? '500px' : '0',
                   overflow: 'hidden',
-                  transition: 'max-height 0.3s ease-out', // Thêm hiệu ứng mượt mà cho sub-menu
+                  transition: 'max-height 0.3s ease-out',
                 }}
               >
                 {item.subItems.map((subItem) => (
@@ -83,12 +89,11 @@ const LeftMenu = () => {
                         transition: 'color 1s ease',
                       }}
                       onClick={(e) => {
-
                         e.preventDefault();
                         navigate(subItem.link);
                       }}
-                      onMouseEnter={(e) => e.target.style.fontWeight = 900}  // Chuyển màu khi hover
-                      onMouseLeave={(e) => e.target.style.fontWeight = 'normal'}  // Quay lại màu ban đầu khi rời chuột
+                      onMouseEnter={(e) => e.target.style.fontWeight = 900}
+                      onMouseLeave={(e) => e.target.style.fontWeight = 'normal'}
                     >
                       {subItem.label}
                     </Menu.Item>

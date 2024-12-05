@@ -13,6 +13,17 @@ const ClockOutButton = ({ onClick }) => {
   );
 };
 
+const SimpleButton = ({title, style, onClick }) => {
+  return (
+    <Button style = {style}
+      onClick={onClick}
+      className = "ui-simple-button"
+    >
+      {title}
+    </Button>
+  );
+};
+
 const CreateOrderButton = ({ title, link, style }) => {
   const navigate = useNavigate();
 
@@ -75,4 +86,4 @@ export default FileUploadButton;
 
 
 
-export { CreateOrderButton, ClockOutButton, FileUploadButton };
+export { CreateOrderButton, ClockOutButton, FileUploadButton, SimpleButton };

@@ -19,7 +19,10 @@ root.render(
     <Provider store={leftMenustore}>
       <Router>
         <Routes>
+          <Route path="/dashboard" element={<Overview />} />
+          {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
 
+          <Route path="/taskList" element={<TaskList />} />
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />

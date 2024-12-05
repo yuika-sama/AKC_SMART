@@ -1,5 +1,4 @@
-
-import { FaTachometerAlt, FaUser, FaFileInvoice, FaFileAlt, FaCreditCard, FaWallet, FaPercentage, FaCog, FaInfoCircle } from "react-icons/fa";
+import { FaTachometerAlt, FaTasks, FaChartLine, FaFileAlt, FaFileInvoice, FaCreditCard, FaWallet } from "react-icons/fa";
 
 const LeftMenuItems = [
   {
@@ -7,57 +6,56 @@ const LeftMenuItems = [
     icon: <FaTachometerAlt />,
     label: 'Dashboard',
     link: '/dashboard',
+    subItems: [],
+  },
+  {
+    key: 'TaskList',
+    icon: <FaTasks />,
+    label: 'Danh sách công việc',
+    link: '/taskList',
+    subItems: [],
+  },
+  {
+    key: 'KPI',
+    icon: <FaChartLine />,
+    label: 'KPI',
+    link: '/kpi',
+    subItems: [],
+  },
+  {
+    key: 'LeaveRequest',
+    icon: <FaFileAlt />,
+    label: 'Đơn xin nghỉ phép',
+    link: '/leaveRequest',
+    subItems: [],
+  },
+  {
+    key: 'OvertimeRequest',
+    icon: <FaFileAlt />,
+    label: 'Đơn xin tăng ca',
+    link: '/overtimeRequest',
+    subItems: [],
+  },
+  {
+    key: 'PaymentRequests',
+    icon: <FaCreditCard />,
+    label: 'Đề nghị thanh toán',
+    link: '/paymentRequests',
     subItems: [
-      { key: 'overview', label: 'Tổng quan', link: '/dashboard/overview' },
-      { key: 'statics', label: 'Bố của tổng quan', link: '/dashboard/statics' },
+      { key: 'advancePayment', label: 'Đơn xin tạm ứng', link: '/paymentRequests/advancePayment' },
+      { key: 'refundPayment', label: 'Đơn xin hoàn ứng', link: '/paymentRequests/refundPayment' },
     ],
   },
   {
-    key: 'Staff',
-    icon: <FaUser />,
-    label: 'Nhân viên',
-    link: '/staff',
-    subItems: [
-      { key: 'timeSheet', label: 'Bảng chấm công', link: '/staff/timeSheet' },
-      { key: 'personalKpi', label: 'Kpi cá nhân', link: '/staff/personalKpi' },
-      { key: 'leaveRequest', label: 'Đơn xin nghỉ phép', link: '/staff/leaveRequest' },
-      { key: 'advancePaymentRequest', label: 'Tạm ứng', link: '/staff/advancePaymentRequest' },
-      { key: 'refundPaymentRequest', label: 'Hoàn ứng', link: '/staff/refundPaymentRequest' },
-      { key: 'timesheetConfirmed', label: 'Xác nhận chấm công', link: '/staff/timeSheetConfirmed' },
-
-    ],
-  },
-  {
-    key: 'warehouse',
+    key: 'Warehouse',
     icon: <FaFileInvoice />,
     label: 'Kho hàng',
     link: '/warehouse',
     subItems: [
-      { key: 'warehouseDashboard', label: 'Tổng quan ', link: '/warehouse/warehouseDashboard' },
-      { key: 'warehouseInventoryManagement', label: 'Yêu cầu nhập kho ', link: '/warehouse/warehouseInventoryManagement' },
-      { key: 'stockReceiving', label: 'Xuất Kho', link: '/warehouse/stockReceiving' },
+      { key: 'stockEntry', label: 'Nhập kho', link: '/warehouse/stockEntry' },
+      { key: 'stockExit', label: 'Xuất kho', link: '/warehouse/stockExit' },
     ],
   },
-  {
-    key: 'humanResourceManagement',
-    icon: <FaFileAlt />,
-    label: 'Nhân sự HR',
-    link: '/humanResourceManagement',
-    subItems: [
-      { key: 'viewAllStaff', label: 'Nhân viên công ty', link: '/quote/viewAllStaff' },
-    ],
-  },
-  {
-    key: 'accountant',
-    icon: <FaWallet />,
-    label: 'Kế toán',
-    link: '/accountant',
-    subItems: [
-      { key: 'cashFlowManagement', label: 'Quản Lý Dòng Tiền', link: '/accountant/cashFlowManagement' },
-      { key: 'accountsPayable', label: 'Các Khoản Phải Trả', link: '/accountant/accountsPayable' },
-      { key: 'paymentDocuments', label: 'Tài Liệu Thanh Toán', link: '/accountant/paymentDocuments' },
-    ],
-  }
 ];
 
 export default LeftMenuItems;
