@@ -52,7 +52,6 @@ const ChartCardComponent = ({ style, data, weekStart }) => {
         width={800}
         height={250}
         data={chartData}
-        margin={{ top: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis

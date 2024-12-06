@@ -26,6 +26,7 @@
   background-color: #ffffff;
   gap: 2%;
   padding: 2vh;
+  overflow: hidden;
 }
 
 #table-container-header-button {
@@ -64,4 +65,5 @@
   background-color: #ffffff;
   gap: 2%;
   padding: 2%;
+  overflow-y: auto;
 }
