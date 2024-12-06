@@ -94,7 +94,7 @@ const SearchFieldComponent = ({ style = {}, placeholder, data, searchBy }) => {
   );
 };
 
-const DropdownListComponent = ({ title, data }) => {
+const DropdownListComponent = ({ style, title, data }) => {
   const [selectedValue, setSelectedValue] = useState('');
 
   const handleChange = (e) => {
@@ -102,7 +102,7 @@ const DropdownListComponent = ({ title, data }) => {
   };
 
   return (
-    <div className='dropdown-list-component'>
+    <div className='dropdown-list-component' style = {style}>
       <div className='dropdown-list-title'>{title}</div>
         <select 
           value={selectedValue} 
@@ -261,4 +261,4 @@ const RenderfieldComponent = ({ title, data }) => {
 };
 
 
-export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent };
+export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent };

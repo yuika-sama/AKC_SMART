@@ -26,6 +26,7 @@
   background-color: #ffffff;
   gap: 2%;
   padding: 2vh;
+  overflow: hidden;
 }
 
 #table-container-header-button {
@@ -42,6 +43,7 @@
   margin-bottom: 1%;
   height: 9%;
   border-bottom: 2.5px solid #F4F4F4;
+  overflow: hidden;
 }
 
 #table-container-header-button-break {
