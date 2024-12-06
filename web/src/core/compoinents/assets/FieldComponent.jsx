@@ -3,7 +3,7 @@ import { Input } from 'semantic-ui-react';
 import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import '../css/inputfield.css';
 
-const InputfieldComponent = ({ title }) => {
+const InputfieldComponent = ({ title, data }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (

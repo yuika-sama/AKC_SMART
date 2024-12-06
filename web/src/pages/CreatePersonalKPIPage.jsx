@@ -12,7 +12,6 @@ import { Placeholder } from "semantic-ui-react";
 
 const CreatePersonalKPIPage = () => {
   const [upLoadData, setUpLoadData] = useState([]); // State to hold the parsed data from the file
-
   const handleFileChange = (data) => {
     setUpLoadData(data); // Set the parsed data in state
   };

@@ -12,6 +12,7 @@ import PersonalKPIPage from './pages/PersonalKPIPage.jsx';
 import LeaveRequestPage from './pages/LeaveRequestPage.jsx';
 import AdvancePaymentRequestPage from './pages/AdvancePaymentRequestPage.jsx';
 import RefundPaymentRequestPage from './pages/RefundPaymentRequestPage.jsx';
+import OverviewPage from './pages/OverviewPage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,10 +20,9 @@ root.render(
     <Provider store={leftMenustore}>
       <Router>
         <Routes>
-          <Route path="/dashboard" element={<Overview />} />
           {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
 
-          <Route path="/taskList" element={<TaskList />} />
+          <Route path="dashboard/" element={<OverviewPage />} />
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />

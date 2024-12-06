@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 
 const daysOfWeek = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
 
-const ChartCard = ({ data, weekStart }) => {
+const ChartCard = ({ style, data, weekStart }) => {
   const startIndex = daysOfWeek.indexOf(weekStart);
   const safeStartIndex = startIndex !== -1 ? startIndex : 0;
 

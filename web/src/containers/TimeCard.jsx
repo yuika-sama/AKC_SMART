@@ -1,7 +1,7 @@
 import React from "react";
 import './css/TimeCard.css'
 
-const TimeCard = () => {
+const TimeCard = ({ style, data }) => {
   return (
     <div className="work-time-container">
       <div className="work-time-header">
@@ -11,9 +11,9 @@ const TimeCard = () => {
           <p className="time-label">Thời gian đã làm</p>
         </div>
       </div>
-      
+
       <div className="divider"></div>
-      
+
       <p className="remaining-time">
         2 ngày nữa để đạt chỉ tiêu
       </p>

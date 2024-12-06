@@ -8,6 +8,7 @@ const HeaderMenu = ({ section }) => {
   const [language, setLanguage] = useState("vi");
   const dispatch = useDispatch();
   const activeItemPath = useSelector((state) => state.menu.activeItemPath);
+  const Name = localStorage.getItem('Name')
 
   const getGreetingMessage = () => {
     const currentHour = new Date().getHours();
