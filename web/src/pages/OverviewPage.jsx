@@ -1,15 +1,16 @@
 import React from "react";
 import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
-import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
+import { BreakButton, DashboardContainer, AnalystContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
-import HeaderBar from "../core/compoinents/assets/HeaderBar.jsx";
+import HeaderMenu from "../core/compoinents/assets/HeaderMenu.jsx";
 import FormField from "../core/compoinents/assets/FormField.jsx";
 import { SearchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
-import { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent } from '../core/compoinents/assets/DashboardComponent.jsx'
-
+import { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent } from '../core/compoinents/assets/AnalystComponent.jsx'
 
 const OverviewPage = () => {
-  const data = [
+  const data = [];
+
+  const chart = [
     { day: 'Thứ hai', hours: 6 },
     { day: 'Thứ ba', hours: 8 },
     { day: 'Thứ tư', hours: 10 },
@@ -20,25 +21,23 @@ const OverviewPage = () => {
   ];
   return (
     <Layout>
-      <HeaderBar userName="Yuika" />
+      <HeaderMenu />
       <LeftMenu />
       <DashboardContainer>
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
-          <BreakButton style={{ gridColumn: "span 6", gridRow: "span 1" }} />
-          <FormField style={{ gridColumn: 'span 2 ', gridRow: 'span 1', }}>
-            <SearchFieldComponent style={{ placeholder: 'Tìm kiếm' }} />
-          </FormField>
+          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
+          <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
         </TableContainerHeaderButton>
 
-        <TableContainerContent>
+        <AnalystContainerContent>
 
-          <TimeCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <DateCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <LeaveRequestCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <WorkingStateCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <ChartCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} data={data} weekStart="Thứ hai" />
+          <TimeCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
+          <DateCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
+          <LeaveRequestCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
+          <WorkingStateCardComponent style={{ gridColumn: "span 2", gridRow: "span 3" }} />
+          <ChartCardComponent style={{ gridColumn: "span 4", gridRow: "span 3" }} data={chart} weekStart="Thứ hai" />
 
-        </TableContainerContent>
+        </AnalystContainerContent>
       </DashboardContainer>
     </Layout>
   );

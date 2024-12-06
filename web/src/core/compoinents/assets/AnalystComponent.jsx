@@ -7,17 +7,10 @@ import '../css/leaveRequestCard.css'
 import '../css/timeCard.css'
 import '../css/workingStateCard.css';
 
-const MonthlyWorkingHoursCompoinent = ({ style, children }) => {
-  return (
-    <div className="grid-item" style={style}>
-      {children}
-    </div>
-  );
-};
 
-const DateCardComponent = () => {
+const DateCardComponent = ({ style }) => {
   return (
-    <div className="work-time-container">
+    <div className="work-time-container" style={style}>
       <div className="work-time-header">
         <div className="time-circle"></div>
         <div className="time-info">
@@ -54,60 +47,62 @@ const ChartCardComponent = ({ style, data, weekStart }) => {
   });
 
   return (
-    <BarChart
-      width={700}
-      height={300}
-      data={chartData}
-      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis
-        dataKey="day"
-        style={{
-          fontSize: '12px',
-          fontWeight: 'normal',
-          fontFamily: 'Arial, sans-serif'
-        }}
-        angle={-45}
-        textAnchor="end"
-      />
-      <YAxis
-        style={{
-          fontSize: '12px',
-          fontWeight: 'normal',
-          fontFamily: 'Arial, sans-serif'
-        }}
-      />
-      <Tooltip
-        contentStyle={{
-          fontSize: '12px',
-          fontWeight: 'normal',
-          fontFamily: 'Arial, sans-serif'
-        }}
-        itemStyle={{
-          fontSize: '12px',
-          fontWeight: 'normal',
-          fontFamily: 'Arial, sans-serif'
-        }}
-      />
-      <Legend
-        wrapperStyle={{
-          fontSize: '15px',
-          fontWeight: 'normal',
-          fontFamily: 'Arial, sans-serif',
-          position: 'top',
-          marginLeft: '50px',
-        }}
-        payload={[{ value: 'Giờ', type: 'square', color: '#8884d8' }]} // Customizing legend text
-      />
-      <Bar dataKey="hours" fill="#8884d8" barSize={20} />
-    </BarChart>
+    <div className="chart" style={style}>
+      <BarChart style={style}
+        width={800}
+        height={250}
+        data={chartData}
+        margin={{ top: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis
+          dataKey="day"
+          style={{
+            fontSize: '12px',
+            fontWeight: 'normal',
+            fontFamily: 'Nunito-Regular'
+          }}
+          angle={-45}
+          textAnchor="end"
+        />
+        <YAxis
+          style={{
+            fontSize: '12px',
+            fontWeight: 'normal',
+            fontFamily: 'Nunito-Regular'
+          }}
+        />
+        <Tooltip
+          contentStyle={{
+            fontSize: '12px',
+            fontWeight: 'normal',
+            fontFamily: 'Nunito-Regular'
+          }}
+          itemStyle={{
+            fontSize: '12px',
+            fontWeight: 'normal',
+            fontFamily: 'Nunito-Regular'
+          }}
+        />
+        <Legend
+          wrapperStyle={{
+            fontSize: '15px',
+            fontWeight: 'normal',
+            fontFamily: 'Nunito-Regular',
+            position: 'top',
+            marginLeft: '50px',
+          }}
+          payload={[{ value: 'Giờ', type: 'square', color: '#8884d8' }]} // Customizing legend text
+        />
+        <Bar dataKey="hours" fill="#8884d8" barSize={20} />
+      </BarChart>
+    </div>
   );
 };
 
-const LeaveRequestCardComponent = () => {
+const LeaveRequestCardComponent = ({ style }) => {
   return (
-    <div className="work-time-container">
+    <div className="work-time-container" style={style}>
       <div className="work-time-header">
         <div className="time-circle"></div>
         <div className="time-info">
@@ -127,7 +122,7 @@ const LeaveRequestCardComponent = () => {
 
 const TimeCardComponent = ({ style, data }) => {
   return (
-    <div className="work-time-container">
+    <div className="work-time-container" style={style}>
       <div className="work-time-header">
         <div className="time-circle"></div>
         <div className="time-info">
@@ -146,7 +141,7 @@ const TimeCardComponent = ({ style, data }) => {
 };
 
 
-const WorkingStateCardComponent = () => {
+const WorkingStateCardComponent = ({ style }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [workStatus, setWorkStatus] = useState("");
   const [timeRange, setTimeRange] = useState("");
@@ -179,7 +174,7 @@ const WorkingStateCardComponent = () => {
   }, [currentTime]);
 
   return (
-    <div className="container">
+    <div className="container" style={style}>
       <h2 className="title">Trạng thái hoạt động</h2>
       <div className="time-clock">{currentTime.toLocaleTimeString()}</div>
       <div className="time-date">
@@ -200,4 +195,4 @@ const WorkingStateCardComponent = () => {
   );
 };
 
-export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent, MonthlyWorkingHoursCompoinent };
+export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent };

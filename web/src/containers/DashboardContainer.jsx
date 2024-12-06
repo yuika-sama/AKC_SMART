@@ -25,6 +25,14 @@ const TableContainerHeaderButton = ({ style, children }) => {
   );
 };
 
+const AnalystContainerContent = ({ style, children }) => {
+  return (
+    <div id="analyst-container-content" style={style}>
+      {children}
+    </div>
+  );
+};
+
 
 const BreakButton = ({ style, children }) => {
   return (
@@ -34,5 +42,4 @@ const BreakButton = ({ style, children }) => {
   );
 };
 
-
-export { DashboardContainer, TableContainerContent, TableContainerHeaderButton, BreakButton };
+export { DashboardContainer, TableContainerContent, TableContainerHeaderButton, BreakButton, AnalystContainerContent };

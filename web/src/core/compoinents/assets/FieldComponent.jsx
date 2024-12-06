@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from 'semantic-ui-react';
 import { Dimmer, Loader, Segment } from 'semantic-ui-react';
+import debounce from "lodash/debounce";
 import '../css/inputfield.css';
 
 const InputfieldComponent = ({ title, data }) => {
@@ -18,16 +19,81 @@ const InputfieldComponent = ({ title, data }) => {
   );
 };
 
-const SearchFieldComponent = ({ style }) => {
+const SearchFieldComponent = ({ style = {}, placeholder, data, searchBy }) => {
+
+  const [searchValue, setSearchValue] = useState("");
+  const [results, setResults] = useState([]);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const debounce = (func, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const fetchData = async (query) => {
+    if (!query.trim()) {
+      return [];
+    }
+    const filteredData = data.filter(item =>
+      item[searchBy] && item[searchBy].toString().toLowerCase().includes(query.toLowerCase())
+    );
+    return filteredData;
+  };
+
+  // Hàm tìm kiếm (debounce)
+  const handleSearch = debounce(async (value) => {
+    if (value.trim()) {
+      const data = await fetchData(value);
+      setResults(data);
+      setIsDropdownVisible(true);
+    } else {
+      setResults([]);
+      setIsDropdownVisible(false);
+    }
+  }, 300);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    handleSearch(value);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".search-field-component")) {
+        setIsDropdownVisible(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className='search-field-component'>
+    <div className="search-field-component" style={style}>
       <Input
-        placeholder={style?.placeholder}
-        style={{ width: '100%', height: '100%' }}
+        placeholder={placeholder}
+        value={searchValue}
+        onChange={handleInputChange}
+        style={{ width: "100%" }}
       />
+      {isDropdownVisible && results.length > 0 && (
+        <div className="dropdown">
+          {results.map((item, index) => (
+            <div key={index} className="dropdown-item">
+              {item[searchBy] || "Không có dữ liệu"}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
+
 
 const SelectFieldComponent = ({ title, options }) => {
   return (
@@ -67,8 +133,8 @@ const RenderfieldComponent = ({ title, data }) => {
   };
 
   useEffect(() => {
-    resetLoading();  // Gọi lại hàm resetLoading khi currentPage thay đổi
-  }, [currentPage]);  // Khi currentPage thay đổi thì sẽ gọi lại setTimeout
+    resetLoading();
+  }, [currentPage]);
 
   if (!data || data.length === 0) return null;
 

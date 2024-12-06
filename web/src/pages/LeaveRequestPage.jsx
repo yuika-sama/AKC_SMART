@@ -43,12 +43,9 @@ const LeaveRequestPage = () => {
       <DashboardContainer>
 
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
-
-
-          <BreakButton style={{ gridColumn: "span 6", gridRow: "span 1" }} />
-          <FormField style={{ gridColumn: 'span 2 ', gridRow: 'span 1', }}>
-            <SearchFieldComponent style={{ placeholder: 'Tìm kiếm' }} />
-          </FormField>
+          <CreateOrderButton title="Tạo Đơn" link="/staff/createLeaveRequest" />
+          <BreakButton style={{ gridColumn: "span 4", gridRow: "span 1" }} />
+          <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
         </TableContainerHeaderButton>
 
         <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>

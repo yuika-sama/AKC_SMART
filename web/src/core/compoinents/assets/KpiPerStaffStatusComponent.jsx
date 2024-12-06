@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/kpiPerStaffStatusComponent.css";
 
-const KpiPerStaffStatusComponent = ({ currentStep }) => {
+const KpiPerStaffStatusComponent = ({ currentStep, title }) => {
   const [lineColors, setLineColors] = useState({ 1: "incomplete", 2: "incomplete" });
   const [circleColors, setCircleColors] = useState({
     1: "inactive", 2: "inactive", 3: "inactive"
@@ -23,7 +23,7 @@ const KpiPerStaffStatusComponent = ({ currentStep }) => {
 
   return (
     <div className="kpi-header">
-      <h3 className="kpi-title">KPI cá nhân</h3>
+      <h3 className="kpi-title">{title}</h3>
       <div className="kpi-steps">
         <div className="kpi-step">
           <div className={`step-circle-draf ${circleColors[1] === "active" ? "active" : ""}`}>

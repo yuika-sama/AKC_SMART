@@ -13,11 +13,11 @@ const ClockOutButton = ({ onClick }) => {
   );
 };
 
-const SimpleButton = ({title, style, onClick }) => {
+const SimpleButton = ({ title, style, onClick }) => {
   return (
-    <Button style = {style}
+    <Button style={style}
       onClick={onClick}
-      className = "ui-simple-button"
+      className="ui-simple-button"
     >
       {title}
     </Button>

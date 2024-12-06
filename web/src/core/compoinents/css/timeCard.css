@@ -1,6 +1,5 @@
 .time-card {
   background-color: #f0f8ff;
-  /* Màu nền nhạt */
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -9,13 +8,11 @@
   align-items: center;
   justify-content: center;
   width: 200px;
-  /* Đặt chiều rộng cố định */
   text-align: center;
 }
 
 .time-card .circle {
   width: 48px;
-  /* Kích thước hình tròn */
   height: 48px;
   border-radius: 50%;
   background-color: #e6f7ff;

@@ -3,19 +3,19 @@ import HeaderBar from "../core/compoinents/assets/HeaderBar.jsx";
 import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
 import FormField from "../core/compoinents/assets/FormField.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
-import { 
-  BreakButton, 
-  DashboardContainer, 
-  TableContainerContent, 
-  TableContainerHeaderButton 
+import {
+  BreakButton,
+  DashboardContainer,
+  TableContainerContent,
+  TableContainerHeaderButton
 } from "../containers/DashboardContainer.jsx";
-import { 
-  InputfieldComponent, 
-  RenderfieldComponent, 
-  SearchFieldComponent 
+import {
+  InputfieldComponent,
+  RenderfieldComponent,
+  SearchFieldComponent
 } from "../core/compoinents/assets/FieldComponent.jsx";
 import { CreateOrderButton, SimpleButton } from "../core/compoinents/assets/Button.jsx";
-import './css/TaskList.css'; 
+import './css/TaskList.css';
 
 const TaskList = () => {
   const [taskData, setTaskData] = useState([
@@ -47,7 +47,7 @@ const TaskList = () => {
   };
 
   const handleCancelAddTask = () => {
-    setIsAddingTask(false); 
+    setIsAddingTask(false);
     setNewTask({ "Tên công việc": "", "Thời gian": "", "Tiến độ": "", "Mô tả": "", "Ghi chú": "" });
   };
 
@@ -73,14 +73,14 @@ const TaskList = () => {
       alert("Vui lòng nhập đầy đủ các thông tin bắt buộc.");
       return;
     }
-  
+
     // Chuyển và định dạng thời gian
     const formattedTime = formatTime(newTask["Thời gian"]);
     if (!formattedTime) {
       alert("Thời gian phải là một số hợp lệ.");
       return;
     }
-  
+
     // Kiểm tra tiến độ hợp lệ
     const progress = parseFloat(newTask["Tiến độ"]);
     if (isNaN(progress) || progress < 0 || progress > 100) {
@@ -88,14 +88,14 @@ const TaskList = () => {
       return;
     }
     newTask["Tiến độ"] = `${progress}%`;
-  
+
     // Thêm công việc vào dữ liệu và sắp xếp
     setTaskData((prevData) => {
       const updatedData = [...prevData, { ...newTask, "Thời gian": formattedTime }];
       updatedData.sort((a, b) => a["Tên công việc"].localeCompare(b["Tên công việc"]));
       return updatedData;
     });
-  
+
     handleCancelAddTask();
   };
 
@@ -143,22 +143,20 @@ const TaskList = () => {
                   <ul className="filter-options">
                     {Object.keys(filterOptions).map((option) => (
                       <li key={option}>
-                        <input 
-                          type="checkbox" 
-                          id={option} 
-                          checked={filterOptions[option]} 
-                          onChange={() => handleFilterChange(option)} 
+                        <input
+                          type="checkbox"
+                          id={option}
+                          checked={filterOptions[option]}
+                          onChange={() => handleFilterChange(option)}
                         />
                         <label htmlFor={option}>{option}</label>
                       </li>
                     ))}
                   </ul>
                 )}
-              </div> 
-              <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
-              <FormField style={{ gridColumn: 'span 2 ', gridRow: 'span 1', }}>
-                <SearchFieldComponent style={{ placeholder: 'Tìm kiếm' }} />
-              </FormField>
+              </div>
+              <BreakButton style={{ gridColumn: "span 4", gridRow: "span 1" }} />
+              <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
             </TableContainerHeaderButton>
 
             <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
@@ -171,13 +169,13 @@ const TaskList = () => {
                     onChange={(e) => setNewTask({ ...newTask, "Tên công việc": e.target.value })}
                   />
                   <input
-                    type="number" 
+                    type="number"
                     placeholder="Thời gian (dạng số)"
                     value={newTask["Thời gian"]}
                     onChange={(e) => setNewTask({ ...newTask, "Thời gian": e.target.value })}
                   />
                   <input
-                    type="number" 
+                    type="number"
                     placeholder="Tiến độ (%)"
                     value={newTask["Tiến độ"]}
                     onChange={(e) => setNewTask({ ...newTask, "Tiến độ": e.target.value })}
@@ -188,15 +186,15 @@ const TaskList = () => {
                     value={newTask["Mô tả"]}
                     onChange={(e) => setNewTask({ ...newTask, "Mô tả": e.target.value })}
                   />
-                  <input 
+                  <input
                     type="text"
                     placeholder="Ghi chú"
                     value={newTask["Ghi chú"]}
                     onChange={(e) => setNewTask({ ...newTask, "Ghi chú": e.target.value })}
                   />
                   <div className="form-buttons">
-                    <button className="confirm" onClick={handleConfirmAddTask}>Xác nhận</button> 
-                    <button className="cancel" onClick={handleCancelAddTask}>Hủy</button> 
+                    <button className="confirm" onClick={handleConfirmAddTask}>Xác nhận</button>
+                    <button className="cancel" onClick={handleCancelAddTask}>Hủy</button>
                   </div>
                 </div>
               )}
@@ -207,7 +205,7 @@ const TaskList = () => {
                   gridTemplateColumns: "repeat(8, 1fr)",
                 }}>
                 {/* Truyền dữ liệu đã được lọc vào RenderfieldComponent */}
-                <RenderfieldComponent data={filterData()} /> 
+                <RenderfieldComponent data={filterData()} />
               </FormField>
             </TableContainerContent>
           </div>
