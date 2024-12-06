@@ -3,14 +3,10 @@ import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
 import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
 import HeaderBar from "../core/compoinents/assets/HeaderBar.jsx";
-import DateCard from "../containers/DateCard.jsx";
-import LeaveRequestCard from "../containers/LeaveRequestCard.jsx";
-import TimeCard from "../containers/TimeCard.jsx";
-import WorkingStateCard from "../containers/WorkingStateCard.jsx";
-import ChartCard from "../containers/ChartCard.jsx";
 import FormField from "../core/compoinents/assets/FormField.jsx";
 import { SearchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
-import './css/Overview.css';
+import { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent } from '../core/compoinents/assets/DashboardComponent.jsx'
+
 
 const OverviewPage = () => {
   const data = [
@@ -36,11 +32,11 @@ const OverviewPage = () => {
 
         <TableContainerContent>
 
-          <TimeCard style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <DateCard style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <LeaveRequestCard style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <WorkingStateCard style={{ gridColumn: "span 4", gridRow: "span 2" }} />
-          <ChartCard style={{ gridColumn: "span 4", gridRow: "span 2" }} data={data} weekStart="Thứ hai" />
+          <TimeCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
+          <DateCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
+          <LeaveRequestCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
+          <WorkingStateCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} />
+          <ChartCardComponent style={{ gridColumn: "span 4", gridRow: "span 2" }} data={data} weekStart="Thứ hai" />
 
         </TableContainerContent>
       </DashboardContainer>
