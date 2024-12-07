@@ -104,22 +104,22 @@ const DropdownListComponent = ({ style, title, data }) => {
   return (
     <div className='dropdown-list-component' style = {style}>
       <div className='dropdown-list-title'>{title}</div>
-        <select 
-          value={selectedValue} 
-          onChange={handleChange} 
-          className="ui dropdown"
-          style={{ width: '100%', height: '40px' }} 
-        >
-          <option value="" disabled>Chọn một mục</option>
-          {data.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+      <select
+        value={selectedValue}
+        onChange={handleChange}
+        className="ui dropdown"
+        style={{ width: '100%', height: '40px' }}
+      >
+        <option value="" disabled>Chọn một mục</option>
+        {data.map((item, index) => (
+          <option key={index} value={item}>
+            {item}
+          </option>
+        ))}
+      </select>
     </div>
   );
-};	
+};
 
 const SelectFieldComponent = ({ title, options }) => {
   return (

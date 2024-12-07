@@ -66,4 +66,5 @@
   background-color: #ffffff;
   gap: 2%;
   padding: 2%;
+  overflow-y: auto;
 }

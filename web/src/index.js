@@ -13,6 +13,7 @@ import LeaveRequestPage from './pages/LeaveRequestPage.jsx';
 import AdvancePaymentRequestPage from './pages/AdvancePaymentRequestPage.jsx';
 import RefundPaymentRequestPage from './pages/RefundPaymentRequestPage.jsx';
 import OverviewPage from './pages/OverviewPage.jsx';
+import WareHouseOverviewPage from './pages/WareHouseOverviewPage.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,7 +22,6 @@ root.render(
       <Router>
         <Routes>
           {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
-
           <Route path="dashboard/" element={<OverviewPage />} />
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
@@ -30,6 +30,8 @@ root.render(
           <Route path="staff/leaveRequest" element={<LeaveRequestPage />} />
           <Route path="staff/advancePaymentRequest" element={<AdvancePaymentRequestPage />} />
           <Route path="staff/RefundPaymentRequest" element={<RefundPaymentRequestPage />} />
+
+          <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
 
           <Route path="/*" element={<NotFoundPage />} />
 
