@@ -54,7 +54,16 @@ const CreateTimeSheetRequestPage = () => {
 
         <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
           <FormField style={{ gridColumn: "span 8", gridRow: "span 1" }}>
-            <KpiPerStaffStatusComponent currentStep={1} title={'Tạo KPI'} />
+            <KpiPerStaffStatusComponent currentStep={1} title={'Bảng chấm công'} />
+          </FormField>
+
+          <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
+            <InputDataFetchFieldComponent
+              title="Mã nhân viên:"
+              value={formData.employeeCode}
+              onChange={(value) => handleChange("employeeCode", value)}
+              dataFetching={["NHMK&^%$"]}
+            />
           </FormField>
 
           <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
@@ -82,15 +91,6 @@ const CreateTimeSheetRequestPage = () => {
               ]}
               value={formData.gender}
               onChange={(selectedValue) => handleChange("gender", selectedValue)}
-            />
-          </FormField>
-
-          <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
-            <InputDataFetchFieldComponent
-              title="Mã nhân viên:"
-              value={formData.employeeCode}
-              onChange={(value) => handleChange("employeeCode", value)}
-              dataFetching={["NHMK&^%$"]}
             />
           </FormField>
 
