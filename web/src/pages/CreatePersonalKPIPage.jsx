@@ -5,9 +5,11 @@ import FormField from "../core/compoinents/assets/FormField.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
 import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
 import KpiPerStaffStatusComponent from "../core/compoinents/assets/KpiPerStaffStatusComponent.jsx";
-import { InputfieldComponent, RenderfieldComponent, SearchFieldComponent, SelectFieldComponent, DropdownListComponent } from "../core/compoinents/assets/FieldComponent.jsx";
+import { InputfieldComponent, RenderfieldComponent, SearchFieldComponent, SelectFieldComponent, DropdownListComponent, InputDataFetchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
 import { CreateOrderButton, FileUploadButton } from "../core/compoinents/assets/Button.jsx";
 import { Placeholder } from "semantic-ui-react";
+import axios from "axios";
+
 
 
 const CreatePersonalKPIPage = () => {
@@ -15,7 +17,8 @@ const CreatePersonalKPIPage = () => {
   const handleFileChange = (data) => {
     setUpLoadData(data); // Set the parsed data in state
   };
-  const data = ["Adu", "Dep zai"]
+  const data = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5', 'Option 6',]
+
   return (
     <Layout>
 
@@ -53,13 +56,13 @@ const CreatePersonalKPIPage = () => {
             <FileUploadButton title="Tải file tại đây" onFileChange={handleFileChange} />
           </FormField>
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
-            <InputfieldComponent title="Mã nhân viên:" />
+            <InputDataFetchFieldComponent title="Mã nhân viên:" dataFetching={data} />
           </FormField>
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
             <InputfieldComponent title="Phòng Ban:" />
           </FormField>
           <FormField style={{ gridColumn: 'span 2', gridRow: 'span 1' }}>
-            <DropdownListComponent title="Chức vụ:" data = {data}/>
+            <DropdownListComponent title="Chức vụ:" data={data} />
           </FormField>
 
           <FormField style={{ gridColumn: upLoadData.length ? 'span 8' : 'span 0', gridRow: upLoadData.length ? 'span 8' : 'span 0' }}>
@@ -72,3 +75,5 @@ const CreatePersonalKPIPage = () => {
 };
 
 export default CreatePersonalKPIPage;
+
+

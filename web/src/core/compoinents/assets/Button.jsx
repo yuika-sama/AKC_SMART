@@ -24,18 +24,25 @@ const SimpleButton = ({ title, style, onClick }) => {
   );
 };
 
-const CreateOrderButton = ({ title, link, style }) => {
+const CreateOrderButton = ({ title, link, style, onClick }) => {
   const navigate = useNavigate();
 
+  const handleClick = (e) => {
+    if (onClick) onClick(e);
+    navigate(link || "/default-route");
+  };
+
   return (
-    <Button style={style}
-      onClick={() => navigate(link || '/default-route')}
+    <Button
+      style={style}
+      onClick={handleClick}
       className="ui button"
     >
       {title}
     </Button>
   );
 };
+
 
 
 const FileUploadButton = ({ title, onFileChange }) => {

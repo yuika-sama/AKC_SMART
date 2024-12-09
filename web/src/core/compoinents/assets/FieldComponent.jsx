@@ -4,17 +4,48 @@ import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import debounce from "lodash/debounce";
 import '../css/inputfield.css';
 
-const InputfieldComponent = ({ title, data }) => {
-  const [isLoading, setIsLoading] = useState(true);
+const InputfieldComponent = ({ title, value, onChange }) => {
+  return (
+    <div className="input-field-component">
+      <div className="input-field-title">{title}</div>
+      <Input
+        type="text"
+        value={value}
+        onChange={onChange} // Đảm bảo onChange được truyền
+        style={{ width: '100%', height: '100%' }}
+      />
+    </div>
+  );
+};
+
+const InputDataFetchFieldComponent = ({ title, value, onChange, dataFetching }) => {
+  const [isReadOnly, setIsReadOnly] = useState(true);
+
+  useEffect(() => {
+    if (dataFetching && dataFetching.length > 0) {
+      setIsReadOnly(true);
+    } else {
+      setIsReadOnly(false);
+    }
+  }, [dataFetching]);
+
+  const handleInputChange = (e) => {
+    onChange(e.target.value);
+  };
 
   return (
-    <div className='input-field-component' >
-      <div className='input-field-title'>{title}</div>
+    <div className="input-field-component">
+      <div className="input-field-title">{title}</div>
       <Input
-        loading={isLoading}
-        style={{ width: '100%', height: '100%' }}
-
+        value={value || (isReadOnly ? dataFetching : '')}
+        loading={false}
+        style={{ width: '100%', height: '40px' }}
+        onChange={handleInputChange}
+        readOnly={isReadOnly}
       />
+      {!dataFetching && !isReadOnly && (
+        <div className="input-warning">Yêu cầu nhập tay</div>
+      )}
     </div>
   );
 };
@@ -45,7 +76,6 @@ const SearchFieldComponent = ({ style = {}, placeholder, data, searchBy }) => {
     return filteredData;
   };
 
-  // Hàm tìm kiếm (debounce)
   const handleSearch = debounce(async (value) => {
     if (value.trim()) {
       const data = await fetchData(value);
@@ -55,7 +85,7 @@ const SearchFieldComponent = ({ style = {}, placeholder, data, searchBy }) => {
       setResults([]);
       setIsDropdownVisible(false);
     }
-  }, 300);
+  }, 700);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -94,34 +124,49 @@ const SearchFieldComponent = ({ style = {}, placeholder, data, searchBy }) => {
   );
 };
 
-const DropdownListComponent = ({ style, title, data }) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const DropdownListComponent = ({ style, title, data = [], onChange }) => {
+  const [selectedValue, setSelectedValue] = useState("");
 
   const handleChange = (e) => {
-    setSelectedValue(e.target.value);
+    const value = e.target.value;
+    setSelectedValue(value); // Update local state
+    if (onChange) onChange(value); // Notify parent component
   };
 
   return (
-    <div className='dropdown-list-component' style = {style}>
-      <div className='dropdown-list-title'>{title}</div>
+    <div className="dropdown-list-component" style={style}>
+      <div className="dropdown-list-title">{title}</div>
       <select
         value={selectedValue}
         onChange={handleChange}
         className="ui dropdown"
-        style={{ width: '100%', height: '40px' }}
+        style={{
+          width: "100%",
+          height: "40px",
+          maxHeight: "150px",
+          overflowY: "auto",
+        }}
       >
-        <option value="" disabled>Chọn một mục</option>
-        {data.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
+        <option style={{ opacity: "70%" }} value="" disabled>
+          {title} {/* Placeholder text */}
+        </option>
+        {data.length > 0 ? (
+          data.map((item, index) => (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          ))
+        ) : (
+          <option value="" disabled>
+            No options available
           </option>
-        ))}
+        )}
       </select>
     </div>
   );
 };
 
-const SelectFieldComponent = ({ title, options }) => {
+const SelectFieldComponent = ({ title, options, onChange, value }) => {
   return (
     <div className='select-field-component'>
       <div className='select-field-title'>{title}</div>
@@ -133,8 +178,9 @@ const SelectFieldComponent = ({ title, options }) => {
           >
             <input
               type="radio"
-              name="gender"
               value={option.value}
+              checked={value === option.value}
+              onChange={(e) => onChange(e.target.value)}
             />
             {option.label}
           </label>
@@ -143,6 +189,7 @@ const SelectFieldComponent = ({ title, options }) => {
     </div>
   );
 };
+
 
 const RenderfieldComponent = ({ title, data }) => {
   const rowsPerPage = 20;
@@ -260,5 +307,4 @@ const RenderfieldComponent = ({ title, data }) => {
   );
 };
 
-
-export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent };
+export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent };

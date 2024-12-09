@@ -14,11 +14,14 @@ import AdvancePaymentRequestPage from './pages/AdvancePaymentRequestPage.jsx';
 import RefundPaymentRequestPage from './pages/RefundPaymentRequestPage.jsx';
 import OverviewPage from './pages/OverviewPage.jsx';
 import WareHouseOverviewPage from './pages/WareHouseOverviewPage.jsx';
+import CreateTimeSheetRequestPage from './pages/CreateTimeSheetRequestPage.jsx';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={leftMenustore}>
+
       <Router>
         <Routes>
           {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
@@ -30,6 +33,9 @@ root.render(
           <Route path="staff/leaveRequest" element={<LeaveRequestPage />} />
           <Route path="staff/advancePaymentRequest" element={<AdvancePaymentRequestPage />} />
           <Route path="staff/RefundPaymentRequest" element={<RefundPaymentRequestPage />} />
+
+
+          <Route path="staff/createTimeSheet" element={<CreateTimeSheetRequestPage />} />
 
           <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
 
