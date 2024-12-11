@@ -1,11 +1,58 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { ClockOutButton } from "./Button";
 import "../css/formField.css";
 import '../css/dateCard.css'
 import '../css/leaveRequestCard.css'
 import '../css/timeCard.css'
 import '../css/workingStateCard.css';
+
+const DoubleBarChart = ({ data, style }) => {
+  const [selectedPeriod, setSelectedPeriod] = useState("week");
+
+  const currentData = data[selectedPeriod];
+
+  return (
+    <div style={style}>
+      <h3>So sánh hàng hóa nhập/xuất kho</h3>
+      <select
+        onChange={(e) => setSelectedPeriod(e.target.value)}
+        value={selectedPeriod}
+        style={{
+          marginBottom: "20px",
+          padding: "10px",
+          fontSize: "16px",
+          borderRadius: "5px",
+          border: "1px solid #ccc",
+          backgroundColor: "#f9f9f9",
+          cursor: "pointer",
+        }}
+      >
+        <option value="week">Tuần</option>
+        <option value="month">Tháng</option>
+        <option value="quarter">Quý</option>
+        <option value="year">Năm</option>
+      </select>
+
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          data={currentData}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          barSize={20}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="period" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="import" fill="#8884d8" name="Nhập kho" />
+          <Bar dataKey="export" fill="#82ca9d" name="Xuất kho" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
 
 
 const DateCardComponent = ({ style }) => {
@@ -194,4 +241,6 @@ const WorkingStateCardComponent = ({ style }) => {
   );
 };
 
-export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent };
+
+
+export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent, DoubleBarChart };

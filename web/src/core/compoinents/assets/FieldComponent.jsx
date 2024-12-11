@@ -11,7 +11,7 @@ const InputfieldComponent = ({ title, value, onChange }) => {
       <Input
         type="text"
         value={value}
-        onChange={onChange} // Đảm bảo onChange được truyền
+        onChange={onChange}
         style={{ width: '100%', height: '100%' }}
       />
     </div>

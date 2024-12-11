@@ -10,8 +10,6 @@ import { CreateOrderButton, FileUploadButton } from "../core/compoinents/assets/
 import { Placeholder } from "semantic-ui-react";
 import axios from "axios";
 
-
-
 const CreatePersonalKPIPage = () => {
   const [upLoadData, setUpLoadData] = useState([]);
   const [formData, setFormData] = useState({
