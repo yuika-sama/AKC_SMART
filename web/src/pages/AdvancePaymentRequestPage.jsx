@@ -35,7 +35,7 @@ const AdvancePaymentRequestPage = () => {
 
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
           <CreateOrderButton title="Tạo Đơn" link="/staff/createLeaveRequest" />
-          <BreakButton style={{ gridColumn: "span 4", gridRow: "span 1" }} />
+          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
           <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
         </TableContainerHeaderButton>
 

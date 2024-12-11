@@ -56,7 +56,7 @@ const PersonalKPIDashBoardPage = () => {
 
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
           <CreateOrderButton title="Tạo Đơn" link="/staff/createPersonalKPI" />
-          <BreakButton style={{ gridColumn: "span 4", gridRow: "span 1" }} />
+          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
           <SearchFieldComponent
             style={{ gridColumn: "span 2" }}
             data={data}

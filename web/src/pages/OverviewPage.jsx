@@ -24,14 +24,9 @@ const OverviewPage = () => {
       <HeaderMenu />
       <LeftMenu />
       <DashboardContainer>
-        <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
-          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
-          <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
-        </TableContainerHeaderButton>
-
         <AnalystContainerContent>
 
-          <TimeCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
+          <TimeCardComponent style={{ gridColumn: "span 2", gridRow: "span 2"}} />
           <DateCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
           <LeaveRequestCardComponent style={{ gridColumn: "span 2", gridRow: "span 2" }} />
           <WorkingStateCardComponent style={{ gridColumn: "span 2", gridRow: "span 3" }} />

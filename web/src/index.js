@@ -15,6 +15,7 @@ import RefundPaymentRequestPage from './pages/RefundPaymentRequestPage.jsx';
 import OverviewPage from './pages/OverviewPage.jsx';
 import WareHouseOverviewPage from './pages/WareHouseOverviewPage.jsx';
 import CreateTimeSheetRequestPage from './pages/CreateTimeSheetRequestPage.jsx';
+import TimeKeeping from './pages/TimeKeeping.jsx';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,6 +34,8 @@ root.render(
           <Route path="staff/leaveRequest" element={<LeaveRequestPage />} />
           <Route path="staff/advancePaymentRequest" element={<AdvancePaymentRequestPage />} />
           <Route path="staff/RefundPaymentRequest" element={<RefundPaymentRequestPage />} />
+
+          <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
 
 
           <Route path="staff/createTimeSheet" element={<CreateTimeSheetRequestPage />} />
