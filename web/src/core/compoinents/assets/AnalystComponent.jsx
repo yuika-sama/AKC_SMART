@@ -14,7 +14,7 @@ const DoubleBarChart = ({ data, style }) => {
 
   return (
     <div style={style}>
-      <h3>So sánh hàng hóa nhập/xuất kho</h3>
+      <h1>So sánh hàng hóa nhập/xuất kho</h1>
       <select
         onChange={(e) => setSelectedPeriod(e.target.value)}
         value={selectedPeriod}

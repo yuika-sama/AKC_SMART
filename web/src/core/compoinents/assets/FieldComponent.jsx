@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { IoMdCheckmark } from 'react-icons/io';
+import { FaPlus, MdDeleteOutline } from "react-icons/fa";
+import { IoMdTrash } from 'react-icons/io';
 import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import debounce from "lodash/debounce";
 import '../css/inputfield.css';
@@ -129,8 +133,8 @@ const DropdownListComponent = ({ style, title, data = [], onChange }) => {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setSelectedValue(value); // Update local state
-    if (onChange) onChange(value); // Notify parent component
+    setSelectedValue(value);
+    if (onChange) onChange(value);
   };
 
   return (
@@ -190,16 +194,15 @@ const SelectFieldComponent = ({ title, options, onChange, value }) => {
   );
 };
 
-
 const RenderfieldComponent = ({ title, data }) => {
   const rowsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);  // Khởi tạo loading = true
+  const [loading, setLoading] = useState(true);
 
   const resetLoading = () => {
     setLoading(true);
     const timer = setTimeout(() => {
-      setLoading(false); // Sau 2 giây, chuyển loading thành false
+      setLoading(false);
     }, 1600);
 
     return () => clearTimeout(timer);
@@ -220,7 +223,7 @@ const RenderfieldComponent = ({ title, data }) => {
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);  // Chuyển sang trang tiếp theo
+      setCurrentPage(currentPage + 1);
     }
   };
 
@@ -271,7 +274,18 @@ const RenderfieldComponent = ({ title, data }) => {
                 {currentPageData.map((item, index) => (
                   <tr key={index}>
                     {columns.map((col, colIndex) => (
-                      <td key={colIndex}>{item[col]}</td>
+                      <td key={colIndex}>
+                        {col === "Mã nhân viên" ? (
+                          <Link
+                            to={`/watch/${item[col]}`}
+                            style={{ fontFamily: 'Nunito-Regular', color: '#4176da', fontWeight: 'bold' }}
+                          >
+                            {item[col]}
+                          </Link>
+                        ) : (
+                          item[col]
+                        )}
+                      </td>
                     ))}
                   </tr>
                 ))}
@@ -287,7 +301,7 @@ const RenderfieldComponent = ({ title, data }) => {
           disabled={currentPage === 1}
           style={{ marginRight: '2%', marginTop: '0.5%' }}
         >
-          <i class="angle left icon"></i>
+          <i className="angle left icon"></i>
         </button>
         <span style={{ marginRight: '1%', marginTop: '0.5%' }}>
           1....
@@ -300,11 +314,170 @@ const RenderfieldComponent = ({ title, data }) => {
           disabled={currentPage === totalPages}
           style={{ marginRight: '1%', marginTop: '0.5%' }}
         >
-          <i class="angle right icon"></i>
+          <i className="angle right icon"></i>
         </button>
       </div>
     </div>
   );
 };
 
-export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent };
+const generateId = (name) => {
+  const formattedName = name
+    .normalize("NFD")                    // Phân tách các dấu
+    .replace(/[\u0300-\u036f]/g, "")     // Loại bỏ các dấu
+    .replace(/\s+/g, "")                 // Loại bỏ khoảng trắng
+    .toUpperCase();                     // Chuyển thành chữ hoa (nếu cần)
+
+  // Kết hợp với thời gian tạo để tạo ra ID duy nhất
+  return `${formattedName}${Date.now()}`;
+};
+
+const FormTaskListComponent = ({ name, title, taskListData, onTaskListChange }) => {
+  const [inputRows, setInputRows] = useState([]);
+  const [taskList, setTaskList] = useState([]);
+  const [logError, setLogError] = useState('');
+
+  const headerData = ['STT', 'Tên công việc', 'Thời gian làm(h)', '% Hoàn thành', 'Mô tả chi tiết', 'Ghi chú', 'Thao tác'];
+
+  const addRow = () => {
+    setLogError('');
+    const newId = generateId(name);
+    setInputRows([
+      ...inputRows,
+      {
+        id: newId,
+        stt: inputRows.length + 1,
+        inputs: Array(5).fill(''),
+        isCompleted: false
+      }
+    ]);
+  };
+
+  const handleInputChange = (rowId, index, value) => {
+    const updatedRows = inputRows.map(row =>
+      row.id === rowId
+        ? { ...row, inputs: row.inputs.map((input, i) => i === index ? value : input) }
+        : row
+    );
+    setInputRows(updatedRows);
+  };
+
+  const handleDelete = (rowId) => {
+    const updatedInputRows = inputRows.filter(row => row.id !== rowId);
+    setInputRows(updatedInputRows);
+
+    const updatedTaskList = taskList.filter(task => task.id !== rowId);
+    setTaskList(updatedTaskList);
+
+    console.log("Danh sách công việc hiện tại sau khi xóa:", updatedTaskList);
+  };
+
+  const handleComplete = (rowId) => {
+    const existingTask = taskList.find(task => task.id === rowId);
+    if (existingTask) {
+      setLogError(`Công việc với ID ${rowId} đã tồn tại!`);
+      console.log(`Công việc với ID ${rowId} đã tồn tại!`);
+      return;
+    }
+
+    const updatedRows = inputRows.map(row =>
+      row.id === rowId ? { ...row, isCompleted: true } : row
+    );
+
+    const completedTask = inputRows.find(row => row.id === rowId);
+    if (completedTask) {
+      const [taskName, timeWorked, completionPercent, description] = completedTask.inputs;
+
+      if (!taskName || !timeWorked || !completionPercent || !description) {
+        setLogError("Lỗi: Các trường Tên công việc, Thời gian làm, % Hoàn thành, và Mô tả chi tiết là bắt buộc.");
+        console.log("Lỗi: Các trường Tên công việc, Thời gian làm, % Hoàn thành, và Mô tả chi tiết là bắt buộc.");
+        return;
+      }
+
+      setInputRows(updatedRows);
+
+      const newTask = {
+        id: completedTask.id,
+        stt: completedTask.stt,
+        name: completedTask.inputs[0],
+        time: completedTask.inputs[1],
+        progress: completedTask.inputs[2],
+        description: completedTask.inputs[3],
+        note: completedTask.inputs[4]
+      };
+
+      const updatedTaskList = [...taskList, newTask];
+      setTaskList(updatedTaskList);
+      onTaskListChange(updatedTaskList);
+
+      console.log('Danh sách công việc hiện tại:', updatedTaskList);
+    }
+  };
+
+  return (
+    <div className='form-task-list-component'>
+      <h3 style={{ marginLeft: '2%', marginTop: '0.2%', position: 'fixed' }}>{title}</h3>
+      <h3 style={{ marginLeft: '2%', marginTop: '2%', position: 'fixed', color: 'red' }}>{logError}</h3> {/* Hiển thị thông báo lỗi */}
+
+      <div className='form-task-list-component-header'>
+        <div style={{ gridColumn: 'span 6' }}></div>
+        <button
+          onClick={addRow}
+          className="form-task-list-component-action-btn"
+        >
+          Add
+        </button>
+      </div>
+
+      <div className='form-task-list-component-input-container'>
+        <div className='form-task-list-component-input-container-header'>
+          {headerData.slice(0, -1).map((header, index) => (
+            <div key={index} className="form-task-list-component-input-cell">
+              <strong>{header}</strong>
+            </div>
+          ))}
+        </div>
+        {inputRows.map(row => (
+          <div key={row.id} className="form-task-list-component-input-row">
+            <div className="form-task-list-component-input-cell">
+              <input
+                type="text"
+                value={row.stt}
+                readOnly
+                className="form-task-list-component-input-field"
+              />
+            </div>
+            {row.inputs.map((input, index) => (
+              <div key={index} className="form-task-list-component-input-cell">
+                {index === 1 || index === 2 ? (
+                  <input
+                    type="number"
+                    value={input}
+                    onChange={(e) => handleInputChange(row.id, index, e.target.value)}
+                    disabled={row.isCompleted}
+                    className="form-task-list-component-input-field"
+                    min="0"
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => handleInputChange(row.id, index, e.target.value)}
+                    disabled={row.isCompleted}
+                    className="form-task-list-component-input-field"
+                  />
+                )}
+              </div>
+            ))}
+            <div className='form-task-list-component-action-btn-container'>
+              <IoMdCheckmark style={{ color: '#0b5da0' }} size={30} onClick={() => handleComplete(row.id)} />
+              <IoMdTrash size={30} onClick={() => handleDelete(row.id)} style={{ color: '#ad3939' }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent, FormTaskListComponent };

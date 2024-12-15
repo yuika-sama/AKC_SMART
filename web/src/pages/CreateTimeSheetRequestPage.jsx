@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import HeaderMenu from "../core/compoinents/assets/HeaderMenu.jsx";
 import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
@@ -6,18 +6,58 @@ import FormField from "../core/compoinents/assets/FormField.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
 import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
 import KpiPerStaffStatusComponent from "../core/compoinents/assets/KpiPerStaffStatusComponent.jsx";
-import { InputfieldComponent, SelectFieldComponent, InputDataFetchFieldComponent, DropdownListComponent } from "../core/compoinents/assets/FieldComponent.jsx";
+import { InputfieldComponent, SelectFieldComponent, InputDataFetchFieldComponent, DropdownListComponent, FormTaskListComponent } from "../core/compoinents/assets/FieldComponent.jsx";
 import { CreateOrderButton } from "../core/compoinents/assets/Button.jsx";
 
 const CreateTimeSheetRequestPage = () => {
   const [formData, setFormData] = useState({
+    employeeCode: "",
     creator: "",
     phoneNumber: "",
     gender: "",
-    employeeCode: "",
     department: "",
     position: "",
-  });
+    taskList: []
+  })
+
+  const data0000 = {
+    employeeCode: "NHMK&^%$",
+    creator: "Vũ Lệnh Hiệp",
+    phoneNumber: "0869561191",
+    gender: "male",
+    department: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    position: ["Option 1", "Option 2", "Option 3"],
+  }
+
+  const dataFetching = {
+    employeeCode: [data0000.employeeCode],
+    creator: ["Vũ Lệnh Hiệp"],
+    phoneNumber: ["0869561191"],
+    gender: ["male"],
+    department: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    position: ["Option 1", "Option 2", "Option 3"],
+  };
+
+  useEffect(() => {
+    const newFormData = { ...formData };
+
+    Object.keys(dataFetching).forEach((key) => {
+      if (dataFetching[key]?.length > 0) {
+        newFormData[key] = dataFetching[key][0];
+      }
+    });
+
+    setFormData(newFormData);
+  }, []);
+
+  const handleCreateOrder = async () => {
+    try {
+      console.log("🚀 Dữ liệu gửi đi:", formData);
+    } catch (error) {
+      console.error("Lỗi khi tạo đơn:", error);
+      alert("Có lỗi xảy ra khi tạo đơn.");
+    }
+  };
 
   const handleChange = (field, value) => {
     setFormData((prevState) => ({
@@ -26,20 +66,12 @@ const CreateTimeSheetRequestPage = () => {
     }));
   };
 
-  const handleCreateOrder = async () => {
-    try {
-      console.log("🚀Dữ liệu gửi đi:", formData);
-      const response = await axios.post("http://localhost:3000/staff", formData, {
-        headers: { "Content-Type": "application/json" },
-      });
-      alert("Tạo đơn thành công!");
-    } catch (error) {
-      console.error("Lỗi khi tạo đơn:", error);
-      alert("Có lỗi xảy ra khi tạo đơn.  ");
-    }
+  const handleTaskListChange = (newTaskList) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      taskList: newTaskList,
+    }));
   };
-
-  const data = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6"];
 
   return (
     <Layout>
@@ -62,23 +94,25 @@ const CreateTimeSheetRequestPage = () => {
               title="Mã nhân viên:"
               value={formData.employeeCode}
               onChange={(value) => handleChange("employeeCode", value)}
-              dataFetching={["NHMK&^%$"]}
+              dataFetching={dataFetching.employeeCode}
             />
           </FormField>
 
           <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
-            <InputfieldComponent
+            <InputDataFetchFieldComponent
               title="Người Tạo:"
               value={formData.creator}
-              onChange={(e) => handleChange("creator", e.target.value)}
+              onChange={(value) => handleChange("creator", value)}
+              dataFetching={dataFetching.creator}
             />
           </FormField>
 
           <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
-            <InputfieldComponent
+            <InputDataFetchFieldComponent
               title="Số Điện Thoại:"
               value={formData.phoneNumber}
-              onChange={(e) => handleChange("phoneNumber", e.target.value)}
+              onChange={(value) => handleChange("phoneNumber", value)}
+              dataFetching={dataFetching.phoneNumber}
             />
           </FormField>
 
@@ -95,21 +129,32 @@ const CreateTimeSheetRequestPage = () => {
           </FormField>
 
           <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
-            <InputfieldComponent
+            <DropdownListComponent
               title="Phòng Ban:"
+              data={dataFetching.department}
               value={formData.department}
-              onChange={(e) => handleChange("department", e.target.value)}
+              onChange={(value) => handleChange("department", value)}
             />
           </FormField>
 
           <FormField style={{ gridColumn: "span 2", gridRow: "span 1" }}>
             <DropdownListComponent
               title="Chức vụ:"
-              data={data}
+              data={dataFetching.position}
               value={formData.position}
               onChange={(value) => handleChange("position", value)}
             />
           </FormField>
+
+          <FormField style={{ gridColumn: "span 8", gridRow: "span 4" }}>
+            <FormTaskListComponent
+              name='Vũ Lệnh Hiệp'
+              title="Danh sách công việc"
+              taskListData={formData.taskList}
+              onTaskListChange={handleTaskListChange}
+            />
+          </FormField>
+
         </TableContainerContent>
       </DashboardContainer>
     </Layout>

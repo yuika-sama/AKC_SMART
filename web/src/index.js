@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -17,6 +19,16 @@ import WareHouseOverviewPage from './pages/WareHouseOverviewPage.jsx';
 import CreateTimeSheetRequestPage from './pages/CreateTimeSheetRequestPage.jsx';
 import TimeKeeping from './pages/TimeKeeping.jsx';
 
+
+if (process.env.NODE_ENV === 'development') {
+  const originalWarn = console.warn;
+  console.warn = (...args) => {
+    if (args[0] && args[0].includes('findDOMNode is deprecated')) {
+      return;
+    }
+    originalWarn(...args);
+  };
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
