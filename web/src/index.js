@@ -25,6 +25,8 @@ import StockReceiveRequestPage from './pages/StockReceiveDashBoardPage.jsx';
 import CreateStockReceiveRequest from './pages/CreateStockReceiveRequest.jsx';
 import CreateStockExportRequest from './pages/CreateStockExportRequest.jsx';
 import StockExportDashBoardPage from './pages/StockExportDashBoardPage.jsx';
+import HumanResourceManagementDashBoardPage from './pages/HumanResourceManagementDashBoardPage.jsx';
+import HumanResourceManagementCreateStaffPage from './pages/HumanResourceManagementCreateStaffPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -66,6 +68,9 @@ root.render(
           <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
           <Route path="warehouse/stockExporting" element={<StockExportDashBoardPage />} />
           <Route path="warehouse/stockReceiving" element={<StockReceiveRequestPage />} />
+
+          <Route path="humanResourceManagement/viewAllStaff" element={<HumanResourceManagementDashBoardPage />} />
+          <Route path="humanResourceManagement/createStaff" element={<HumanResourceManagementCreateStaffPage />} />
           <Route path="/*" element={<NotFoundPage />} />
 
 
