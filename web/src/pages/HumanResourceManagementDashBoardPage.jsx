@@ -63,7 +63,7 @@ const HumanResourceManagementDashBoardPage = () => {
 
         <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
           <FormField style={{ gridColumn: 'span 8', gridRow: 'span 8' }}>
-            <RenderfieldComponent data={data} />
+            <RenderfieldComponent data={data} option='Mã nhân viên' />
           </FormField>
         </TableContainerContent>
       </DashboardContainer>

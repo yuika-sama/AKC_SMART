@@ -7,14 +7,14 @@ import '../css/leaveRequestCard.css'
 import '../css/timeCard.css'
 import '../css/workingStateCard.css';
 
-const DoubleBarChart = ({ data, style }) => {
+const DoubleBarChart = ({ data, style, tittle }) => {
   const [selectedPeriod, setSelectedPeriod] = useState("week");
 
   const currentData = data[selectedPeriod];
 
   return (
     <div style={style}>
-      <h1>So sánh hàng hóa nhập/xuất kho</h1>
+      <h1> {tittle}</h1>
       <select
         onChange={(e) => setSelectedPeriod(e.target.value)}
         value={selectedPeriod}

@@ -27,6 +27,9 @@ import CreateStockExportRequest from './pages/CreateStockExportRequest.jsx';
 import StockExportDashBoardPage from './pages/StockExportDashBoardPage.jsx';
 import HumanResourceManagementDashBoardPage from './pages/HumanResourceManagementDashBoardPage.jsx';
 import HumanResourceManagementCreateStaffPage from './pages/HumanResourceManagementCreateStaffPage.jsx';
+import AccountsPayableDashboardPage from './pages/AccountsPayableDashboardPage.jsx';
+import CashFlowManagementDashboard from './pages/CashFlowManagementDashboard.jsx';
+import PaymentDocumentsDashBoardPage from './pages/PaymentDocumentsDashBoardPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -55,8 +58,10 @@ root.render(
           <Route path="staff/leaveRequest" element={<LeaveRequestPage />} />
           <Route path="staff/advancePaymentRequest" element={<AdvancePaymentRequestPage />} />
           <Route path="staff/RefundPaymentRequest" element={<RefundPaymentRequestPage />} />
-
-          <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
+          <Route path="humanResourceManagement/viewAllStaff" element={<HumanResourceManagementDashBoardPage />} />
+          <Route path="warehouse/stockExporting" element={<StockExportDashBoardPage />} />
+          <Route path="accountant/paymentDocuments" element={<PaymentDocumentsDashBoardPage />} />
+          <Route path="accountant/accountsPayable" element={<AccountsPayableDashboardPage />} />
 
           <Route path="staff/createTimeSheet" element={<CreateTimeSheetRequestPage />} />
           <Route path="staff/createLeaveRequest" element={<CreateLeaveRequestPage />} />
@@ -66,13 +71,12 @@ root.render(
           <Route path="staff/createStockExportRequest" element={<CreateStockExportRequest />} />
 
           <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
-          <Route path="warehouse/stockExporting" element={<StockExportDashBoardPage />} />
           <Route path="warehouse/stockReceiving" element={<StockReceiveRequestPage />} />
 
-          <Route path="humanResourceManagement/viewAllStaff" element={<HumanResourceManagementDashBoardPage />} />
           <Route path="humanResourceManagement/createStaff" element={<HumanResourceManagementCreateStaffPage />} />
           <Route path="/*" element={<NotFoundPage />} />
-
+          <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
+          <Route path="accountant/cashFlowManagement" element={<CashFlowManagementDashboard />} />
 
         </Routes>
       </Router>

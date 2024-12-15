@@ -194,7 +194,7 @@ const SelectFieldComponent = ({ title, options, onChange, value }) => {
   );
 };
 
-const RenderfieldComponent = ({ title, data }) => {
+const RenderfieldComponent = ({ title, data, option }) => {
   const rowsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -275,7 +275,7 @@ const RenderfieldComponent = ({ title, data }) => {
                   <tr key={index}>
                     {columns.map((col, colIndex) => (
                       <td key={colIndex}>
-                        {col === "Mã nhân viên" ? (
+                        {col === option ? (
                           <Link
                             to={`/watch/${item[col]}`}
                             style={{ fontFamily: 'Nunito-Regular', color: '#4176da', fontWeight: 'bold' }}

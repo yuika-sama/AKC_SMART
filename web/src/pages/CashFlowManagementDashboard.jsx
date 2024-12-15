@@ -7,7 +7,7 @@ import FormField from "../core/compoinents/assets/FormField.jsx";
 import { SearchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
 import { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent, DoubleBarChart } from '../core/compoinents/assets/AnalystComponent.jsx'
 
-const WareHouseOverviewPage = () => {
+const CashFlowManagementDashboard = () => {
   const data = [
     { day: 'Chủ nhật', hours: 5 },
     { day: 'Thứ hai', hours: 8 },
@@ -64,7 +64,7 @@ const WareHouseOverviewPage = () => {
         </TableContainerHeaderButton>
 
         <AnalystContainerContent>
-          <DoubleBarChart tittle={'So sánh hàng hóa nhập/xuất kho'} data={sampleData} style={{ gridColumn: "span 8", gridRow: "span 3" }} />
+          <DoubleBarChart tittle={'Quản lý dòng tiền'} data={sampleData} style={{ gridColumn: "span 4", gridRow: "span 3" }} />
         </AnalystContainerContent>
 
       </DashboardContainer>
@@ -72,4 +72,4 @@ const WareHouseOverviewPage = () => {
   );
 };
 
-export default WareHouseOverviewPage;
+export default CashFlowManagementDashboard;
