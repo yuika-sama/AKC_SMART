@@ -21,6 +21,10 @@ import TimeKeeping from './pages/TimeKeeping.jsx';
 import CreateLeaveRequestPage from './pages/CreateLeaveRequestPage.jsx';
 import CreateAdvancePaymentRequest from './pages/CreateAdvancePaymentRequest.jsx';
 import CreateRefundRequest from './pages/CreateRefundRequestPage.jsx';
+import StockReceiveRequestPage from './pages/StockReceiveDashBoardPage.jsx';
+import CreateStockReceiveRequest from './pages/CreateStockReceiveRequest.jsx';
+import CreateStockExportRequest from './pages/CreateStockExportRequest.jsx';
+import StockExportDashBoardPage from './pages/StockExportDashBoardPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -56,9 +60,12 @@ root.render(
           <Route path="staff/createLeaveRequest" element={<CreateLeaveRequestPage />} />
           <Route path="staff/createAdvancePaymentRequest" element={<CreateAdvancePaymentRequest />} />
           <Route path="staff/createRefundPaymentRequest" element={<CreateRefundRequest />} />
+          <Route path="staff/createStockReceiveRequest" element={<CreateStockReceiveRequest />} />
+          <Route path="staff/createStockExportRequest" element={<CreateStockExportRequest />} />
 
           <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
-
+          <Route path="warehouse/stockExporting" element={<StockExportDashBoardPage />} />
+          <Route path="warehouse/stockReceiving" element={<StockReceiveRequestPage />} />
           <Route path="/*" element={<NotFoundPage />} />
 
 

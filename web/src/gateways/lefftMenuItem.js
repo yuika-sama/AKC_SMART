@@ -34,8 +34,8 @@ const LeftMenuItems = [
     link: '/warehouse',
     subItems: [
       { key: 'warehouseDashboard', label: 'Tổng quan ', link: '/warehouse/warehouseDashboard' },
-      { key: 'warehouseInventoryManagement', label: 'Yêu cầu nhập kho ', link: '/warehouse/warehouseInventoryManagement' },
-      { key: 'stockReceiving', label: 'Xuất Kho', link: '/warehouse/stockReceiving' },
+      { key: 'stockReceiving', label: 'Yêu cầu nhập kho ', link: '/warehouse/stockReceiving' },
+      { key: 'stockExporting', label: 'Xuất Kho', link: '/warehouse/stockExporting' },
     ],
   },
   {
