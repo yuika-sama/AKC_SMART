@@ -18,6 +18,9 @@ import OverviewPage from './pages/OverviewPage.jsx';
 import WareHouseOverviewPage from './pages/WareHouseOverviewPage.jsx';
 import CreateTimeSheetRequestPage from './pages/CreateTimeSheetRequestPage.jsx';
 import TimeKeeping from './pages/TimeKeeping.jsx';
+import CreateLeaveRequestPage from './pages/CreateLeaveRequestPage.jsx';
+import CreateAdvancePaymentRequest from './pages/CreateAdvancePaymentRequest.jsx';
+import CreateRefundRequest from './pages/CreateRefundRequestPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -49,8 +52,10 @@ root.render(
 
           <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
 
-
           <Route path="staff/createTimeSheet" element={<CreateTimeSheetRequestPage />} />
+          <Route path="staff/createLeaveRequest" element={<CreateLeaveRequestPage />} />
+          <Route path="staff/createAdvancePaymentRequest" element={<CreateAdvancePaymentRequest />} />
+          <Route path="staff/createRefundPaymentRequest" element={<CreateRefundRequest />} />
 
           <Route path="warehouse/warehouseDashboard" element={<WareHouseOverviewPage />} />
 

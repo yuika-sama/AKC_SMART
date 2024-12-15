@@ -4,7 +4,7 @@ import LeftMenu from "../core/compoinents/assets/LeftMenu.jsx";
 import FormField from "../core/compoinents/assets/FormField.jsx";
 import Layout from "../core/compoinents/assets/Layout.jsx";
 import { BreakButton, DashboardContainer, TableContainerContent, TableContainerHeaderButton } from "../containers/DashboardContainer.jsx";
-import {RenderfieldComponent, SearchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
+import { RenderfieldComponent, SearchFieldComponent } from "../core/compoinents/assets/FieldComponent.jsx";
 import { CreateOrderButton } from "../core/compoinents/assets/Button.jsx";
 
 const data = [
@@ -36,17 +36,17 @@ data.forEach(employee => {
 const TimeKeeping = () => {
   return (
     <Layout>
-      <HeaderMenu/>
-      <LeftMenu/>
+      <HeaderMenu />
+      <LeftMenu />
       <DashboardContainer>
         <TableContainerHeaderButton>
-          <CreateOrderButton/>
-          <BreakButton style={{gridColumn: "span 5", gridRow: "span 1"}}/>
-          <SearchFieldComponent style={{gridColumn: "span 2"}} placeholder="Tìm kiếm theo tên"/>
+          <CreateOrderButton title='xác nhận' />
+          <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
+          <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" />
         </TableContainerHeaderButton>
-        <TableContainerContent style={{gridColumn: "span 8", gridRow: "span 6"}}>
-          <FormField style={{gridColumn: "span 8", gridRow: "span 8"}}>
-            <RenderfieldComponent data = {data}/>
+        <TableContainerContent style={{ gridColumn: "span 8", gridRow: "span 6" }}>
+          <FormField style={{ gridColumn: "span 8", gridRow: "span 8" }}>
+            <RenderfieldComponent data={data} />
           </FormField>
         </TableContainerContent>
       </DashboardContainer>
