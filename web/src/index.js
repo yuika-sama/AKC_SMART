@@ -51,6 +51,7 @@ root.render(
         <Routes>
           {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
           <Route path="dashboard/" element={<OverviewPage />} />
+          <Route path="/" element={<OverviewPage />} />
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />

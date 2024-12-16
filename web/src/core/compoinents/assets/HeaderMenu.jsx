@@ -2,23 +2,25 @@ import React, { useState } from "react";
 import { Menu } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveItem } from "../../../slice/leftMenuSlice.js";
+import { SpeechBubble } from "react-kawaii";
 import "../css/headerMenu.css";
 
 const HeaderMenu = ({ section }) => {
   const [language, setLanguage] = useState("vi");
   const dispatch = useDispatch();
   const activeItemPath = useSelector((state) => state.menu.activeItemPath);
-  const Name = localStorage.getItem('Name')
+  const Name = localStorage.getItem('Name') || 'Hiệp ';
+  const icon = '🚀';
 
   const getGreetingMessage = () => {
     const currentHour = new Date().getHours();
 
     if (currentHour >= 6 && currentHour < 12) {
-      return "Chào buổi sáng ${Name}";
+      return `${icon} Chào buổi sáng ${Name} `;
     } else if (currentHour >= 12 && currentHour < 18) {
-      return "Chào buổi chiều ${Name}";
+      return `${icon} Chào buổi chiều ${Name}`;
     } else {
-      return "Buổi tối tốt lành ${Name}";
+      return `${icon} Buổi tối tốt lành ${Name}`;
     }
   };
 
