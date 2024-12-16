@@ -30,6 +30,7 @@ import HumanResourceManagementCreateStaffPage from './pages/HumanResourceManagem
 import AccountsPayableDashboardPage from './pages/AccountsPayableDashboardPage.jsx';
 import CashFlowManagementDashboard from './pages/CashFlowManagementDashboard.jsx';
 import PaymentDocumentsDashBoardPage from './pages/PaymentDocumentsDashBoardPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -51,7 +52,8 @@ root.render(
         <Routes>
           {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
           <Route path="dashboard/" element={<OverviewPage />} />
-          <Route path="/" element={<OverviewPage />} />
+          <Route path="/" element={<LoginPage />} />
+
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />

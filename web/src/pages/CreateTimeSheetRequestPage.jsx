@@ -80,7 +80,7 @@ const CreateTimeSheetRequestPage = () => {
       <DashboardContainer>
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }}>
           <CreateOrderButton onClick={handleCreateOrder} title="Tạo Đơn" />
-          <CreateOrderButton title="Xem trước" />
+          {/* <CreateOrderButton title="Xem trước" /> */}
           <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
         </TableContainerHeaderButton>
 

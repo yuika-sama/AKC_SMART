@@ -25,7 +25,7 @@ const KpiPerStaffStatusComponent = ({ currentStep, title }) => {
     <div className="kpi-header">
       <h3 className="kpi-title">{title}</h3>
       <div className="kpi-steps">
-        <div className="kpi-step">
+        {/* <div className="kpi-step">
           <div className={`step-circle-draf ${circleColors[1] === "active" ? "active" : ""}`}>
             1
           </div>
@@ -41,7 +41,7 @@ const KpiPerStaffStatusComponent = ({ currentStep, title }) => {
           <div className={`step-circle-completed ${circleColors[3] === "active" ? "active" : ""}`}>
             3
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

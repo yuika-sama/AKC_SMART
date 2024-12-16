@@ -10,11 +10,9 @@ const leftMenuSlice = createSlice({
     toggleSubMenu: (state, action) => {
       const key = action.payload;
 
-      // Nếu sub-menu đang mở, đóng nó, nếu không thì mở và đóng tất cả các menu khác
       if (state[key]) {
         state[key] = false; // Đóng menu hiện tại
       } else {
-        // Đóng tất cả các menu khác và mở menu hiện tại
         for (const itemKey in state) {
           state[itemKey] = false;
         }

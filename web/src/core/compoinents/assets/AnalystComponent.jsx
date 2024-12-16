@@ -236,7 +236,7 @@ const WorkingStateCardComponent = ({ style }) => {
           <span className="time-amount">8h/ngày</span>
         </div>
       </div>
-      <ClockOutButton />
+      <ClockOutButton title={'Đăng xuất'} />
     </div>
   );
 };

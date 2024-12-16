@@ -2,16 +2,34 @@ import React, { useState } from 'react';
 import { Button, Input } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx';
+import { Loader } from 'semantic-ui-react'; // Import Loader từ Semantic UI React
 import '../css/button.css'
 
+const ClockOutButton = ({ onClick, title }) => {
+  const [loading, setLoading] = useState(false); // Để quản lý trạng thái loading
+  const navigate = useNavigate(); // Dùng hook navigate để chuyển hướng
 
-const ClockOutButton = ({ onClick }) => {
+  const handleClick = () => {
+    setLoading(true); // Bật chế độ loading
+    setTimeout(() => {
+      // Sau 3 giây, thực hiện chuyển hướng và gọi hàm onClick
+      navigate('/'); // Chuyển hướng về trang chủ
+    }, 3000);
+  };
+
   return (
-    <button className="clock-out-button" onClick={onClick}>
-      <span>Clock out</span>
+    <button className="clock-out-button" onClick={handleClick} disabled={loading}>
+      <span>
+        {loading ? (
+          <Loader active inline size="mini" className="custom-loader" />
+        ) : (
+          title
+        )}
+      </span>
     </button>
   );
 };
+
 
 const SimpleButton = ({ title, style, onClick }) => {
   return (

@@ -6,6 +6,8 @@ import { FaPlus, MdDeleteOutline } from "react-icons/fa";
 import { IoMdTrash } from 'react-icons/io';
 import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import debounce from "lodash/debounce";
+import { DatePicker } from "antd"; // Import DatePicker từ Ant Design
+import moment from "moment"; // Import thư viện moment để xử lý ngày tháng
 import '../css/inputfield.css';
 
 const InputfieldComponent = ({ title, value, onChange }) => {
@@ -48,7 +50,38 @@ const InputDataFetchFieldComponent = ({ title, value, onChange, dataFetching }) 
         readOnly={isReadOnly}
       />
       {!dataFetching && !isReadOnly && (
-        <div className="input-warning">Yêu cầu nhập tay</div>
+        <div className="input-warning"> </div>
+      )}
+    </div>
+  );
+};
+
+const DateFieldComponent = ({ title, value, onChange, dataFetching }) => {
+  const [isReadOnly, setIsReadOnly] = useState(true);
+
+  useEffect(() => {
+    if (dataFetching && dataFetching.length > 0) {
+      setIsReadOnly(true); // Đặt readonly nếu có dữ liệu fetching
+    } else {
+      setIsReadOnly(false); // Nếu không có dữ liệu fetching, cho phép chỉnh sửa
+    }
+  }, [dataFetching]);
+
+  const handleDateChange = (date, dateString) => {
+    onChange(dateString); // Khi người dùng chọn ngày, gọi onChange với giá trị ngày dạng chuỗi
+  };
+
+  return (
+    <div className="date-field-component">
+      <div className="date-field-title">{title}</div>
+      <DatePicker
+        value={value ? moment(value, "DD/MM/YYYY") : null} // Chuyển đổi giá trị sang dạng moment
+        onChange={handleDateChange}
+        style={{ width: "100%", height: "40px" }}
+        disabled={isReadOnly} // Đặt readonly nếu có dữ liệu fetching
+      />
+      {!dataFetching && !isReadOnly && (
+        <div className="input-warning">Vui lòng chọn ngày</div>
       )}
     </div>
   );
@@ -171,6 +204,9 @@ const DropdownListComponent = ({ style, title, data = [], onChange }) => {
 };
 
 const SelectFieldComponent = ({ title, options, onChange, value }) => {
+  const [isReadOnly, setIsReadOnly] = useState(true);
+
+
   return (
     <div className='select-field-component'>
       <div className='select-field-title'>{title}</div>
@@ -480,4 +516,4 @@ const FormTaskListComponent = ({ name, title, taskListData, onTaskListChange }) 
   );
 };
 
-export { InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent, FormTaskListComponent };
+export { DateFieldComponent, InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent, FormTaskListComponent };

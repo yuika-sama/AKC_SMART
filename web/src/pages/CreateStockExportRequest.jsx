@@ -19,10 +19,29 @@ const CreateStockExportRequest = () => {
     employeeCode: "",
     department: "",
     position: "",
-    refundAmount: "",    // Số tiền yêu cầu hoàn ứng
-    purpose: "",         // Mục đích hoàn ứng
-    refundDate: "",      // Ngày hoàn ứng
+    refundAmount: "",
+    purpose: "",
+    refundDate: "",
   });
+
+  const data0000 = {
+    employeeCode: "NHMK&^%$",
+    creator: "Vũ Lệnh Hiệp",
+    phoneNumber: "0869561191",
+    gender: "male",
+    department: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    position: ["Option 1", "Option 2", "Option 3"],
+  }
+
+  const dataFetching = {
+    employeeCode: [data0000.employeeCode],
+    creator: ["Vũ Lệnh Hiệp"],
+    phoneNumber: ["0869561191"],
+    gender: ["male"],
+    department: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    position: ["Option 1", "Option 2", "Option 3"],
+  };
+
 
   const handleFileChange = (data) => {
     setUpLoadData(data);
