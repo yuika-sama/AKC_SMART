@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, BarChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart } from 'recharts';
+
 import { ClockOutButton } from "./Button";
 import "../css/formField.css";
 import '../css/dateCard.css'
@@ -240,7 +241,32 @@ const WorkingStateCardComponent = ({ style }) => {
     </div>
   );
 };
+const CashFlowChart = ({ data, style, title }) => {
+  return (
+    <div style={style}>
+      <h1>{title}</h1>
+      <ResponsiveContainer width="100%" height={400}>
+        <ComposedChart
+          data={data}
+          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+        >
+          <CartesianGrid stroke="#f5f5f5" />
+          <XAxis
+            dataKey="name"
+            scale="band"
+            tick={{ fontSize: 12, textAnchor: "start", dx: 45 }}
+            interval={0}
+          />
+          <YAxis tickFormatter={(value) => value.toLocaleString()} />
+          <Tooltip formatter={(value) => value.toLocaleString()} />
+          <Legend />
+
+          <Bar dataKey="amount" barSize={60} fill="#413ea0" />
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
 
 
-
-export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent, DoubleBarChart };
+export { WorkingStateCardComponent, TimeCardComponent, LeaveRequestCardComponent, ChartCardComponent, DateCardComponent, DoubleBarChart, CashFlowChart };
