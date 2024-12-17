@@ -357,6 +357,165 @@ const RenderfieldComponent = ({ title, data, option }) => {
   );
 };
 
+
+const AproveRenderfieldComponent = ({ title, data, option }) => {
+  const rowsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resetLoading = () => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1600);
+
+    return () => clearTimeout(timer);
+  };
+
+  useEffect(() => {
+    resetLoading();
+  }, [currentPage]);
+
+  if (!data || data.length === 0) return null;
+
+  const columns = Object.keys(data[0]);
+
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const currentPageData = data.slice(startIndex, startIndex + rowsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  // Xử lý thay đổi checkbox của từng item
+  const handleSelectItem = (itemId) => {
+    setSelectedItems(prevState =>
+      prevState.includes(itemId)
+        ? prevState.filter(id => id !== itemId)
+        : [...prevState, itemId]
+    );
+  };
+
+  const handleSelectAll = () => {
+    if (selectedItems.length === currentPageData.length) {
+      setSelectedItems([]); // Bỏ chọn tất cả
+    } else {
+      const allItemIds = currentPageData.map(item => item.id);
+      setSelectedItems(allItemIds);
+    }
+  };
+
+  return (
+    <div className='render-field-component'>
+      {title && (
+        <div className='render-field-component-header'>
+          <div className='render-field-title'>{title}</div>
+        </div>
+      )}
+      <div className='render-field-component-content'>
+        <div className='render-field-render-content-title'>
+          <table style={{ width: '100%', height: '100%' }}>
+            <thead>
+              <tr>
+                <th style={{ backgroundColor: '#c9c9c9', borderRadius: '20px' }}>
+                  <input
+                    type="checkbox"
+                    checked={selectedItems.length === currentPageData.length} // Nếu tất cả các item trong trang hiện tại được chọn
+                    onChange={handleSelectAll} // Khi nhấn vào checkbox này, chọn/deselect tất cả
+                  />
+                </th>
+                {columns.map((col, index) => (
+                  <th
+                    style={{ backgroundColor: '#c9c9c9', borderRadius: '20px' }}
+                    key={index}
+                  >
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div className='render-field-render-content-body'>
+          {loading ? (
+            <div className="ui active dimmer" style={{ backgroundColor: '#ffffff' }}>
+              <div className="ui text loader" style={{
+                color: '#0b1629',
+                width: '100%',
+                height: '80%'
+              }} />
+              <div style={{ color: '#c9c9c9', textAlign: 'center' }} > --- Loading</div>
+            </div>
+          ) : (
+            <table>
+              <tbody>
+                {currentPageData.map((item, index) => (
+                  <tr key={index}>
+                    <td style={{ textAlign: 'center' }}>
+                      <input
+                        type="checkbox"
+                        checked={selectedItems.includes(item.id)} // Kiểm tra nếu item này đã được chọn
+                        onChange={() => handleSelectItem(item.id)} // Khi thay đổi, chọn hoặc bỏ chọn item
+                      />
+                    </td>
+                    {columns.map((col, colIndex) => (
+                      <td key={colIndex}>
+                        {col === option ? (
+                          <Link
+                            to={`/watch/${item[col]}`}
+                            style={{ fontFamily: 'Nunito-Regular', color: '#4176da', fontWeight: 'bold' }}
+                          >
+                            {item[col]}
+                          </Link>
+                        ) : (
+                          item[col]
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
+
+      <div className='render-field-render-content-footer'>
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          style={{ marginRight: '2%', marginTop: '0.5%' }}
+        >
+          <i className="angle left icon"></i>
+        </button>
+        <span style={{ marginRight: '1%', marginTop: '0.5%' }}>
+          1.... <span style={{ textDecoration: 'underline' }}>{currentPage}</span> ....{totalPages}
+        </span>
+
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          style={{ marginRight: '1%', marginTop: '0.5%' }}
+        >
+          <i className="angle right icon"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const generateId = (name) => {
   const formattedName = name
     .normalize("NFD")                    // Phân tách các dấu
@@ -516,4 +675,4 @@ const FormTaskListComponent = ({ name, title, taskListData, onTaskListChange }) 
   );
 };
 
-export { DateFieldComponent, InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent, FormTaskListComponent };
+export { DateFieldComponent, AproveRenderfieldComponent, InputfieldComponent, SearchFieldComponent, SelectFieldComponent, RenderfieldComponent, DropdownListComponent, InputDataFetchFieldComponent, FormTaskListComponent };

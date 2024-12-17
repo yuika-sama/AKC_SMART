@@ -1,61 +1,37 @@
 import mongoose from 'mongoose';
-import DATATYPE from '../../core/constants/dataTypeConstants/datatypeConstants.js';
-const Schema = mongoose.Schema;
 
-const attendanceSchema = new Schema({
-  createdBy: {
-    type: DATATYPE.STRING,
-    require: true
+const dailyTimeSheetSchema = new mongoose.Schema({
+  employeeCode: {
+    type: String,
+    required: true,
   },
-  employeeId: {
-    type: DATATYPE.STRING,
-    require: true
+  creator: {
+    type: String,
+    required: true,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'other'],
+    required: true,
   },
   department: {
-    type: DATATYPE.STRING,
-    require: true
+    type: String,
+    required: true,
   },
-  email: {
-    type: DATATYPE.STRING,
-    require: true
+  position: {
+    type: String,
+    required: true,
   },
-  timeSheetId: {
-    type: DATATYPE.STRING,
-    require: true
+  taskList: {
+    type: [String],
+    default: [],
   },
-  date: {
-    type: DATATYPE.DATE,
-    required: true
-  },
-  checkIn: {
-    type: DATATYPE.DATE,
-    required: true
-  },
-  checkOut: {
-    type: DATATYPE.DATE,
-    required: true
-  },
-  workingHoursPerDay: {
-    type: DATATYPE.NUMBER,
-    required: true
-  },
-  status: {
-    type: DATATYPE.STRING,
-    enum: ['On Time', 'Late', 'Absent'],
-    default: 'On Time'
-  },
-  approvalStatus: {
-    type: DATATYPE.STRING,
-    enum: ['draft', 'approved'],
-    default: 'draft'
-  },
-  notes: {
-    type: DATATYPE.STRING,
-  }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
-const dailyTimeSheetModel = mongoose.model('dailyTimeSheet', attendanceSchema);
+const dailyTimeSheetModel = mongoose.model('DailyTimeSheet', dailyTimeSheetSchema);
 
 export default dailyTimeSheetModel;

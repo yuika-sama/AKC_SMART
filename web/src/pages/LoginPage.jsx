@@ -1,26 +1,46 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, Header, Icon } from 'semantic-ui-react';
+import { Button, Form, Input, Header, Message } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Quản lý trạng thái loading
+  const [errorMessage, setErrorMessage] = useState(''); // Quản lý thông báo lỗi
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true); // Bắt đầu loading
+    setErrorMessage(''); // Reset lỗi mỗi khi submit
 
-    // Giả lập quá trình đăng nhập với thời gian delay 2s
-    setTimeout(() => {
-      // Sau 2 giây, giả lập đăng nhập thành công và điều hướng
-      console.log('Email:', email);
-      console.log('Password:', password);
+    // Kiểm tra nếu email hoặc password trống
+    if (!email || !password) {
+      setIsLoading(false);
+      setErrorMessage('Vui lòng nhập cả tài khoản và mật khẩu!');
+      return;
+    }
 
-      // Điều hướng tới trang dashboard
-      navigate('/dashboard');
-    }, 2000); // Delay 2s
+    // Kiểm tra tài khoản và mật khẩu hợp lệ
+    if ((email === 'admin' || email === 'user') && password === '1') {
+      // Lưu thông tin role vào localStorage
+      const role = email === 'admin' ? 'admin' : 'user';
+      localStorage.setItem('role', role); // Lưu role vào localStorage
+
+      // Giả lập quá trình đăng nhập thành công với thời gian delay 2s
+      setTimeout(() => {
+        console.log('Email:', email);
+        console.log('Password:', password);
+        console.log('Role:', role); // Kiểm tra role lưu trong localStorage
+
+        // Điều hướng tới trang dashboard
+        navigate('/dashboard');
+      }, 2000); // Delay 2s
+    } else {
+      // Nếu thông tin đăng nhập không hợp lệ
+      setIsLoading(false);
+      setErrorMessage('Sai tài khoản hoặc mật khẩu!');
+    }
   };
 
   return (
@@ -56,6 +76,14 @@ const LoginPage = () => {
       }}>
         <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Đăng nhập</h2>
         <p style={{ textAlign: 'center', color: '#777', marginBottom: '30px' }}>Chào mừng bạn trở lại!</p>
+
+        {/* Hiển thị thông báo lỗi nếu có */}
+        {errorMessage && (
+          <Message negative>
+            <Message.Header>{errorMessage}</Message.Header>
+          </Message>
+        )}
+
         <Form onSubmit={handleSubmit}>
           <Form.Field>
             <label htmlFor="email">Email</label>

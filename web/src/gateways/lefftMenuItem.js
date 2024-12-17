@@ -66,6 +66,17 @@ const LeftMenuItems = [
     subItems: [
       { key: 'Hướng dẫn chấm công', label: 'Hướng dẫn chấm công', link: '/intellectuality/timeSheetTnstruction' },
     ],
+  },
+  {
+    key: 'Approve ',
+    icon: <GiLightBulb />,
+    label: 'Duyệt đơn',
+    link: '/approve',
+    subItems: [
+      { key: 'Nghỉ phép', label: 'Duyệt đơn xin nghỉ phép', link: '/approve/leaveRequest' },
+      { key: 'Tăng ca', label: 'Duyệt đơn xin tăng ca', link: '/approve/overTime' },
+
+    ],
   }
 ];
 

@@ -31,6 +31,7 @@ import AccountsPayableDashboardPage from './pages/AccountsPayableDashboardPage.j
 import CashFlowManagementDashboard from './pages/CashFlowManagementDashboard.jsx';
 import PaymentDocumentsDashBoardPage from './pages/PaymentDocumentsDashBoardPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import ApproveLeaveRequestPage from './pages/ApproveLeaveRequestPage.jsx';
 
 
 if (process.env.NODE_ENV === 'development') {
@@ -80,6 +81,10 @@ root.render(
           <Route path="/*" element={<NotFoundPage />} />
           <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
           <Route path="accountant/cashFlowManagement" element={<CashFlowManagementDashboard />} />
+
+
+
+          <Route path="approve/leaveRequest" element={<ApproveLeaveRequestPage />} />
 
         </Routes>
       </Router>

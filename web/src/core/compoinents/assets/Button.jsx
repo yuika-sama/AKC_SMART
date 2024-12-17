@@ -12,6 +12,7 @@ const ClockOutButton = ({ onClick, title }) => {
   const handleClick = () => {
     setLoading(true); // Bật chế độ loading
     setTimeout(() => {
+      localStorage.clear();
       // Sau 3 giây, thực hiện chuyển hướng và gọi hàm onClick
       navigate('/'); // Chuyển hướng về trang chủ
     }, 3000);

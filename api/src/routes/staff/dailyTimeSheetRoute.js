@@ -1,21 +1,25 @@
-import express from "express";
-import dailyTimeSheetController from "../../controllers/staff/dailyTimeSheetController.js";
-import dashboardController from "../../controllers/staff/dashBoardController.js";
+import express from 'express';
+import {
+  createDailyTimeSheet,
+  getAllDailyTimeSheets,
+  getDailyTimeSheetByEmployeeCode,
+  updateDailyTimeSheet,
+  deleteDailyTimeSheet, getDailyTimeSheetsByEmployeeCode
+} from '../../controllers/staff/dailyTimeSheetController.js';
+
+
 const dailyTimeSheetRouter = express.Router();
 
+dailyTimeSheetRouter.post('/daily-time-sheet', createDailyTimeSheet);
 
-dailyTimeSheetRouter.get('/getDailyTimeSheetByID/:id', dailyTimeSheetController.getDailyTimeSheetById);
-dailyTimeSheetRouter.get('/getDailyTimeSheet', dailyTimeSheetController.getAllDailyTimeSheet);
-dailyTimeSheetRouter.get('/getLast30DaysTimeSheets', dailyTimeSheetController.getLast30DaysTimeSheets);
-dailyTimeSheetRouter.get('/getPaginatedTimeSheets', dailyTimeSheetController.getPaginatedTimeSheets);
-dailyTimeSheetRouter.get('/getEmployeeWorkingHours/:employeeId', dashboardController.getMonthlyWorkingHours);
+dailyTimeSheetRouter.get('/daily-time-sheets', getAllDailyTimeSheets);
 
-dailyTimeSheetRouter.post('/createDailyTimeSheet', dailyTimeSheetController.createDailyTimeSheet);
-// dailyTimeSheetRouter.post('/createMultipleTimeSheets', dailyTimeSheetController.createMultipleTimeSheets);
+dailyTimeSheetRouter.get('/daily-time-sheet/:employeeCode', getDailyTimeSheetByEmployeeCode);
 
-dailyTimeSheetRouter.put('/updateDailyTimeSheet/:id', dailyTimeSheetController.updateDailyTimeSheet);
+dailyTimeSheetRouter.get('/daily-time-sheets/employee/:employeeCode', getDailyTimeSheetsByEmployeeCode);
 
-dailyTimeSheetRouter.delete('/deleteDailyTimeSheet/:id', dailyTimeSheetController.deletedDailyTimeSheet);
+dailyTimeSheetRouter.put('/daily-time-sheet/:employeeCode', updateDailyTimeSheet);
 
+dailyTimeSheetRouter.delete('/daily-time-sheet/:employeeCode', deleteDailyTimeSheet);
 
 export default dailyTimeSheetRouter;
