@@ -33,7 +33,9 @@ const data = [
 ];
 
 const ApproveLeaveRequestPage = () => {
-
+  const handleApproveClick = () => {
+    alert("Duyệt Đơn thành công!");
+  };
   return (
     <Layout>
 
@@ -43,7 +45,7 @@ const ApproveLeaveRequestPage = () => {
       <DashboardContainer>
 
         <TableContainerHeaderButton style={{ gridColumn: "span 8", gridRow: "span 1" }} >
-          <CreateOrderButton title="Duyệt Đơn" link="/staff/createLeaveRequest" />
+          <CreateOrderButton title="Duyệt Đơn" link="/approve/leaveRequest" onClick={handleApproveClick} />
           <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
           <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" data={data} searchBy="Tên" />
         </TableContainerHeaderButton>

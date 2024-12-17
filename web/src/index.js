@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -32,7 +30,10 @@ import CashFlowManagementDashboard from './pages/CashFlowManagementDashboard.jsx
 import PaymentDocumentsDashBoardPage from './pages/PaymentDocumentsDashBoardPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import ApproveLeaveRequestPage from './pages/ApproveLeaveRequestPage.jsx';
-
+import ApproveStockExportDashBoardPage from './pages/ApproveStockExportDashBoardPage.jsx';
+import ApproveStockReceiveDashBoardPage from './pages/ApproveStockReceiveDashBoardPage.jsx';
+import PrivateRoute from './core/role/PrivateRoute.jsx';
+import Tutorial from './pages/Tutorial.jsx';
 
 if (process.env.NODE_ENV === 'development') {
   const originalWarn = console.warn;
@@ -48,13 +49,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={leftMenustore}>
-
       <Router>
         <Routes>
-          {/* <Route path = "dashboard/statics" element = {<TaskList/>}/> */}
           <Route path="dashboard/" element={<OverviewPage />} />
           <Route path="/" element={<LoginPage />} />
-
 
           <Route path="staff/createPersonalKPI" element={<CreatePersonalKPIPage />} />
           <Route path="staff/timeSheet" element={<TimeSheetDashBoardPage />} />
@@ -82,10 +80,12 @@ root.render(
           <Route path="staff/confirmedTimeSheet" element={<TimeKeeping />} />
           <Route path="accountant/cashFlowManagement" element={<CashFlowManagementDashboard />} />
 
+          <Route path="intellectuality/timeSheetTnstruction" element={<Tutorial />} />
 
-
-          <Route path="approve/leaveRequest" element={<ApproveLeaveRequestPage />} />
-
+          {/* Các route có yêu cầu quyền admin */}
+          <Route path="approve/leaveRequest" element={<PrivateRoute element={<ApproveLeaveRequestPage />} requiredRole="admin" />} />
+          <Route path="approve/stockExported" element={<PrivateRoute element={<ApproveStockExportDashBoardPage />} requiredRole="admin" />} />
+          <Route path="approve/stockRecieved" element={<PrivateRoute element={<ApproveStockReceiveDashBoardPage />} requiredRole="admin" />} />
         </Routes>
       </Router>
     </Provider>

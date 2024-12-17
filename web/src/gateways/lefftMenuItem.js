@@ -1,6 +1,7 @@
 
 import { FaTachometerAlt, FaUser, FaFileInvoice, FaFileAlt, FaCreditCard, FaWallet, FaPercentage, FaCog, FaInfoCircle } from "react-icons/fa";
 import { GiLightBulb } from 'react-icons/gi';
+import { RiAdminFill } from "react-icons/ri";
 
 const LeftMenuItems = [
   {
@@ -69,12 +70,13 @@ const LeftMenuItems = [
   },
   {
     key: 'Approve ',
-    icon: <GiLightBulb />,
+    icon: <RiAdminFill />,
     label: 'Duyệt đơn',
     link: '/approve',
     subItems: [
       { key: 'Nghỉ phép', label: 'Duyệt đơn xin nghỉ phép', link: '/approve/leaveRequest' },
-      { key: 'Tăng ca', label: 'Duyệt đơn xin tăng ca', link: '/approve/overTime' },
+      { key: 'Xuất kho', label: 'Duyệt đơn xin Xuất kho', link: '/approve/stockExported' },
+      { key: 'Nhập kho', label: 'Duyệt đơn xin nhập kho', link: '/approve/stockRecieved' },
 
     ],
   }

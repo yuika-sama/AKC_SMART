@@ -32,15 +32,20 @@ data.forEach(employee => {
   }
 });
 
-
 const TimeKeeping = () => {
+
+  const handleConfirmClick = () => {
+    // Hiển thị thông báo xác nhận
+    alert("Xác nhận thành công!");
+  };
+
   return (
     <Layout>
       <HeaderMenu />
       <LeftMenu />
       <DashboardContainer>
         <TableContainerHeaderButton>
-          <CreateOrderButton title='xác nhận' />
+          <CreateOrderButton title='Xác nhận' onClick={handleConfirmClick} />
           <BreakButton style={{ gridColumn: "span 5", gridRow: "span 1" }} />
           <SearchFieldComponent style={{ gridColumn: "span 2" }} placeholder="Tìm kiếm theo tên" />
         </TableContainerHeaderButton>
@@ -51,7 +56,7 @@ const TimeKeeping = () => {
         </TableContainerContent>
       </DashboardContainer>
     </Layout>
-  )
-}
+  );
+};
 
-export default TimeKeeping
+export default TimeKeeping;

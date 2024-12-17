@@ -357,12 +357,11 @@ const RenderfieldComponent = ({ title, data, option }) => {
   );
 };
 
-
 const AproveRenderfieldComponent = ({ title, data, option }) => {
   const rowsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState({});
 
   const resetLoading = () => {
     setLoading(true);
@@ -398,21 +397,27 @@ const AproveRenderfieldComponent = ({ title, data, option }) => {
     }
   };
 
-  // Xử lý thay đổi checkbox của từng item
   const handleSelectItem = (itemId) => {
-    setSelectedItems(prevState =>
-      prevState.includes(itemId)
-        ? prevState.filter(id => id !== itemId)
-        : [...prevState, itemId]
-    );
+    setSelectedItems(prevState => ({
+      ...prevState,
+      [itemId]: !prevState[itemId] // Chọn hoặc bỏ chọn item tùy theo trạng thái hiện tại
+    }));
   };
 
+  // Xử lý chọn tất cả các items trên trang hiện tại
   const handleSelectAll = () => {
-    if (selectedItems.length === currentPageData.length) {
-      setSelectedItems([]); // Bỏ chọn tất cả
+    const allItemIds = currentPageData.map(item => item["Mã nhân viên"]);
+    const allSelected = allItemIds.every(id => selectedItems[id]);
+    if (allSelected) {
+      // Nếu tất cả đã được chọn, bỏ chọn tất cả
+      setSelectedItems({});
     } else {
-      const allItemIds = currentPageData.map(item => item.id);
-      setSelectedItems(allItemIds);
+      // Nếu không, chọn tất cả các item
+      const newSelectedItems = allItemIds.reduce((acc, id) => {
+        acc[id] = true;
+        return acc;
+      }, {});
+      setSelectedItems(newSelectedItems);
     }
   };
 
@@ -431,7 +436,7 @@ const AproveRenderfieldComponent = ({ title, data, option }) => {
                 <th style={{ backgroundColor: '#c9c9c9', borderRadius: '20px' }}>
                   <input
                     type="checkbox"
-                    checked={selectedItems.length === currentPageData.length} // Nếu tất cả các item trong trang hiện tại được chọn
+                    checked={currentPageData.every(item => selectedItems[item["Mã nhân viên"]])} // Kiểm tra xem tất cả các item trong trang hiện tại đã được chọn chưa
                     onChange={handleSelectAll} // Khi nhấn vào checkbox này, chọn/deselect tất cả
                   />
                 </th>
@@ -466,8 +471,8 @@ const AproveRenderfieldComponent = ({ title, data, option }) => {
                     <td style={{ textAlign: 'center' }}>
                       <input
                         type="checkbox"
-                        checked={selectedItems.includes(item.id)} // Kiểm tra nếu item này đã được chọn
-                        onChange={() => handleSelectItem(item.id)} // Khi thay đổi, chọn hoặc bỏ chọn item
+                        checked={selectedItems[item["Mã nhân viên"]] || false} // Kiểm tra nếu item này đã được chọn
+                        onChange={() => handleSelectItem(item["Mã nhân viên"])} // Khi thay đổi, chọn hoặc bỏ chọn item
                       />
                     </td>
                     {columns.map((col, colIndex) => (
